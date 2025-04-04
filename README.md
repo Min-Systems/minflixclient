@@ -1,2 +1,2 @@
 # MinflixClient
-This is the front end client for the minflix streaming service
+This is the frontend client for the minflix streaming service
