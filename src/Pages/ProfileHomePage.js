@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getTokenData, isTokenValid } from '../Network';
 import FilmList from '../Components/FilmList';
 import EditProfileForm from '../Components/EditProfileForm';
+import FilmWatcher from '../Components/FilmWatcher';
 
 const ProfileHomePage = () => {
     const navigate = useNavigate();
@@ -43,6 +44,7 @@ const ProfileHomePage = () => {
             <p>Profile for {displayName}</p>
             <button onClick={() => navigate("/profiles")}>Back to profiles</button>
             <FilmList filmList={['echoes_of_tommorow', 'starlight_odyssey', 'under_the_crimson_sun']}/>
+            <FilmWatcher />
         </div>
     );
 
