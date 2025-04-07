@@ -116,6 +116,13 @@ export const editProfile = async (displayName, newDisplayName) => {
   }, true); // requires authentication
 };
 
+// Get film data
+export const getFilmData = async () => {
+  return apiRequest('/getfilms', {
+    method: 'GET',
+  }, false);
+};
+
 // Add a watch later
 export const addWatchLater = async(filmId, profileId) => {
   const formData = new URLSearchParams();
