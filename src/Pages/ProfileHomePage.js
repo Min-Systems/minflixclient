@@ -69,8 +69,9 @@ const ProfileHomePage = () => {
             <h2>Profile Home Page</h2>
             <EditProfileForm loadProfile={loadProfileData} />
             <p>Profile for {displayName}</p>
-            <button onClick={() => navigate("/profiles")}>Back to profiles</button>
-            <FilmList filmIds={filmIds}/>
+            <button onClick={() => navigate('/profiles')}>Back to profiles</button>
+            { /*<FilmList filmIds={filmIds} isFilmBrowser={false}/> */ }
+            <button onClick={() => navigate(`/browse/${profileId}`)}>Browse Films</button>
         </div>
     );
 

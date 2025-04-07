@@ -1,8 +1,12 @@
 import React, { useState, useEffect, use } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { getFilmData } from '../Network';
+import FilmList from '../Components/FilmList';
 
 const FilmBrowserPage = () => {
     const navigate = useNavigate();
+    const { profileId } = useParams();
+    const [filmIds, setFilmIds] = useState([]);
 
     useEffect(() => {
         loadFilmData();
@@ -34,7 +38,10 @@ const FilmBrowserPage = () => {
     };
 
     return (
-        <div></div>
+        <div>
+            <FilmList filmIds={filmIds} isFilmBrowser={true} />
+            <button onClick={() => { navigate(`/profile/${profileId}`) }}>Back to profile</button>
+        </div>
     );
 };
 
