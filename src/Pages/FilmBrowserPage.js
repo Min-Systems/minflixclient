@@ -21,10 +21,12 @@ const FilmBrowserPage = () => {
 
             console.log(films);
 
+            /*
             // access each array element
             films.forEach(film => {
                 console.log(`Film ID: ${film.id}, Title: ${film.title}, Name: ${film.image_name}`);
             });
+            */
 
             // get the film titles and put them into the state
             const filmIds = films.map(film => film.id);
