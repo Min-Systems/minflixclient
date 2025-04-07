@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginPage from './Pages/LoginPage';
+import RegistrationPage from './Pages/RegistrationPage';
+import ProfilePickerPage from './Pages/ProfilePickerPage';
+import ProfileHomePage from './Pages/ProfileHomePage';
+import FilmBrowserPage from './Pages/FilmBrowserPage';
+import FilmWatcher from './Components/FilmWatcher';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<LoginPage />} />
+        <Route path='/register' element={<RegistrationPage />} />
+        <Route path='/profiles' element={<ProfilePickerPage />} />
+        <Route path='/profile/:profileId' element={<ProfileHomePage />} />
+        <Route path='/browse/:profileId' element={<FilmBrowserPage />} />
+        <Route path='/watch/:filmId' element={<FilmWatcher />} />
+      </Routes>
+    </Router>
   );
 }
 
