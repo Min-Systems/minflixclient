@@ -8,8 +8,7 @@
     flex-direction: column;
     min-height: 100vh;
     overflow: hidden;
-    background: linear-gradient(to bottom,  blue, #000000); /* flipped gradient with dark blue top */
+    background: linear-gradient(to bottom,  blue, #000000);
     color: white;
     text-align: center;
-    /*padding: 10px;*/
   }

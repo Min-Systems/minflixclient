@@ -7,7 +7,7 @@ const ActionButton = ({ label, onClick, type = 'button', id }) => {
         className="action-button"
         onClick={onClick}
         type={type}
-        id={id} // ✅ for styling or testing
+        id={id}
       >
         {label}
       </button>
