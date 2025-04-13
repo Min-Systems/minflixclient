@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login, register } from '../Network'; // Import the API functions
 
+/*
+    This component allows a user to login or register with a form
+*/
 const AuthenticationForm = ({ isLogin = false }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');

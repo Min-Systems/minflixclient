@@ -3,6 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getFilmData } from '../Network';
 import FilmList from '../Components/FilmList';
 
+/*
+    Page that allows a user to browse every film
+    It does this with a FilmList component which has a prop to display all films
+*/
 const FilmBrowserPage = () => {
     const navigate = useNavigate();
     const { profileId } = useParams();
@@ -14,6 +18,7 @@ const FilmBrowserPage = () => {
 
     const loadFilmData = async () => {
         try {
+            // add the ability to check if the films are added
             // get film data from getfilms endpoint
             const filmData = await getFilmData();
             // turn the string into a js object
@@ -41,7 +46,7 @@ const FilmBrowserPage = () => {
 
     return (
         <div>
-            <FilmList filmIds={filmIds} isFilmBrowser={true} />
+            <FilmList filmIds={filmIds} isFilmBrowser={true} profileId={profileId}/>
             <button onClick={() => { navigate(`/profile/${profileId}`) }}>Back to profile</button>
         </div>
     );

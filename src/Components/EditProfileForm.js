@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { editProfile, isTokenValid } from '../Network';
 
+/*
+    This component allows a user to edit the name of a profile
+*/
 const EditProfileForm = ({ loadProfile }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [displayName, setDisplayName] = useState('');

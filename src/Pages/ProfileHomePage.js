@@ -3,8 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getTokenData, isTokenValid, getFilmData } from '../Network';
 import FilmList from '../Components/FilmList';
 import EditProfileForm from '../Components/EditProfileForm';
-import FilmWatcher from '../Components/FilmWatcher';
+import FilmWatcher from './FilmWatcher';
 
+/*
+    Page that allows users to see everything about a specific profile
+*/
 const ProfileHomePage = () => {
     const navigate = useNavigate();
     const { profileId } = useParams();

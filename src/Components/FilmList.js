@@ -4,7 +4,10 @@ import { addProfile, editProfile, getTokenData, isTokenValid, getAuthToken } fro
 import network from '../Network';
 const { API_BASE_URL } = network;
 
-const FilmList = ({ filmIds, isFilmBrowser }) => {
+/*
+    This component displays a list of films using a list of filmIds
+*/
+const FilmList = ({ filmIds, isFilmBrowser, profileId }) => {
     const [filmList, setFilmList] = useState([]);
     const navigate = useNavigate();
 
@@ -13,6 +16,7 @@ const FilmList = ({ filmIds, isFilmBrowser }) => {
         if (filmIds && Array.isArray(filmIds)) {
             getFilmsToRender();
         }
+        console.log(`In filmList component profileId: ${profileId}`)
     }, [filmIds]); // Add filmIds as a dependency
 
     const getFilmsToRender = () => {
@@ -34,7 +38,7 @@ const FilmList = ({ filmIds, isFilmBrowser }) => {
 
     const watchFilm = (filmId) => {
         // Navigate to the watch film page with the film ID
-        navigate(`/watch/${filmId}`);
+        navigate(`/watch/${filmId}`, { state: { profileId } });
     };
 
     const addToWatchLater = async (filmId) => {

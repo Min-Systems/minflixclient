@@ -2,6 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import AuthenticationForm from '../Components/AuthenticationForm'
 
+/*
+    Page that allows user to register
+*/
 const RegistrationPage = () => {
     const navigate = useNavigate();
 

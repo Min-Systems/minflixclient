@@ -4,7 +4,7 @@ import RegistrationPage from './Pages/RegistrationPage';
 import ProfilePickerPage from './Pages/ProfilePickerPage';
 import ProfileHomePage from './Pages/ProfileHomePage';
 import FilmBrowserPage from './Pages/FilmBrowserPage';
-import FilmWatcher from './Components/FilmWatcher';
+import FilmWatcher from './Pages/FilmWatcher';
 
 function App() {
   return (
