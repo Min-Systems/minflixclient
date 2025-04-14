@@ -59,60 +59,60 @@ const apiRequest = async (endpoint, options = {}, requiresAuth = false) => {
 
 // Login
 export const login = async (username, password) => {
-  const formData = new URLSearchParams();
-  formData.append('username', username);
-  formData.append('password', password);
+  const bodyFields = new URLSearchParams();
+  bodyFields.append('username', username);
+  bodyFields.append('password', password);
 
   return apiRequest('/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: formData
+    body: bodyFields
   });
 };
 
 //Register a new user
 export const register = async (username, password) => {
-  const formData = new URLSearchParams();
-  formData.append('username', username);
-  formData.append('password', password);
+  const bodyFields = new URLSearchParams();
+  bodyFields.append('username', username);
+  bodyFields.append('password', password);
 
   return apiRequest('/registration', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: formData
+    body: bodyFields
   });
 };
 
 // Add a profile
 export const addProfile = async (displayName) => {
-  const formData = new URLSearchParams();
-  formData.append('displayname', displayName);
+  const bodyFields = new URLSearchParams();
+  bodyFields.append('displayname', displayName);
 
   return apiRequest('/addprofile', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: formData
+    body: bodyFields
   }, true); // requires authentication
 };
 
 // Edit a profile
 export const editProfile = async (displayName, newDisplayName) => {
-  const formData = new URLSearchParams();
-  formData.append('displayname', displayName);
-  formData.append('newdisplayname', newDisplayName);
+  const bodyFields = new URLSearchParams();
+  bodyFields.append('displayname', displayName);
+  bodyFields.append('newdisplayname', newDisplayName);
 
   return apiRequest('/editprofile', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: formData
+    body: bodyFields
   }, true); // requires authentication
 };
 
@@ -124,8 +124,17 @@ export const getFilmData = async () => {
 };
 
 // Add a watch later
-export const addWatchLater = async(filmId, profileId) => {
-  const formData = new URLSearchParams();
+export const addWatchLater = async(profileId, filmId) => {
+  return apiRequest(`/watchlater/${profileId}/${filmId}`, {
+    method: 'POST'
+  }, true); // requires authentication
+};
+
+// Add a favorite
+export const addFavorite = async(profileId, filmId) => {
+  return apiRequest(`/favorite/${profileId}/${filmId}`, {
+    method: 'POST'
+  }, true); // requires authentication
 };
 
 // Get JWT token data
@@ -165,5 +174,7 @@ export default {
   addProfile,
   getTokenData,
   isTokenValid,
+  addWatchLater,
+  addFavorite,
   API_BASE_URL
 };

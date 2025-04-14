@@ -26,13 +26,6 @@ const FilmBrowserPage = () => {
 
             console.log(films);
 
-            /*
-            // access each array element
-            films.forEach(film => {
-                console.log(`Film ID: ${film.id}, Title: ${film.title}, Name: ${film.image_name}`);
-            });
-            */
-
             // get the film titles and put them into the state
             const filmIds = films.map(film => film.id);
             setFilmIds(filmIds);
@@ -46,7 +39,7 @@ const FilmBrowserPage = () => {
 
     return (
         <div>
-            <FilmList filmIds={filmIds} isFilmBrowser={true} profileId={profileId}/>
+            <FilmList bannerDisplay= {'Browse Films'} filmIds={filmIds} isFilmBrowser={true} profileId={profileId}/>
             <button onClick={() => { navigate(`/profile/${profileId}`) }}>Back to profile</button>
         </div>
     );
