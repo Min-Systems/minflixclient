@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { addProfile, editProfile, getTokenData, isTokenValid, getAuthToken } from '../Network';
+import { addProfile, editProfile, getTokenData, isTokenValid, getAuthToken, addFavorite } from '../Network';
+import { addWatchLater } from '../Network';
 import network from '../Network';
 const { API_BASE_URL } = network;
 
-const FilmList = ({ filmIds, isFilmBrowser }) => {
+/*
+    This component displays a list of films using a list of filmIds
+*/
+const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
     const [filmList, setFilmList] = useState([]);
     const navigate = useNavigate();
 
@@ -13,6 +17,7 @@ const FilmList = ({ filmIds, isFilmBrowser }) => {
         if (filmIds && Array.isArray(filmIds)) {
             getFilmsToRender();
         }
+        console.log(`In filmList component profileId: ${profileId}`)
     }, [filmIds]); // Add filmIds as a dependency
 
     const getFilmsToRender = () => {
@@ -34,38 +39,34 @@ const FilmList = ({ filmIds, isFilmBrowser }) => {
 
     const watchFilm = (filmId) => {
         // Navigate to the watch film page with the film ID
-        navigate(`/watch/${filmId}`);
+        navigate(`/watch/${filmId}`, { state: { profileId } });
     };
 
-    const addToWatchLater = async (filmId) => {
+    const handleAddWatchLater = async (filmId) => {
         try {
-            // Add implementation for adding to watch later
-            // This would typically be an API call
             console.log(`Adding film ${filmId} to watch later list`);
-            // Example: await addToWatchLaterAPI(filmId);
-            alert('Film added to watch later!');
+            const newToken = await addWatchLater(profileId, filmId);
+            
+            localStorage.setItem('authToken', newToken);
         } catch (error) {
             console.error('Error adding to watch later:', error);
-            alert('Failed to add film to watch later');
         }
     };
 
-    const addToFavorites = async (filmId) => {
+    const handleAddFavorite = async (filmId) => {
         try {
-            // Add implementation for adding to favorites
-            // This would typically be an API call
             console.log(`Adding film ${filmId} to favorites`);
-            // Example: await addToFavoritesAPI(filmId);
-            alert('Film added to favorites!');
+            const newToken = await addFavorite(profileId, filmId);
+
+            localStorage.setItem('authToken', newToken);
         } catch (error) {
             console.error('Error adding to favorites:', error);
-            alert('Failed to add film to favorites');
         }
     };
 
     return (
         <div>
-            <h2>Film List</h2>
+            <h2>{bannerDisplay}</h2>
             {filmList.length > 0 ? (
                 filmList.map((film) => (
                     <div key={film.id} className='filmItem'>
@@ -87,13 +88,13 @@ const FilmList = ({ filmIds, isFilmBrowser }) => {
                                 </button>
                                 <button 
                                     className="watchlater-button"
-                                    onClick={() => addToWatchLater(film.id)}
+                                    onClick={() => handleAddWatchLater(film.id)}
                                 >
                                     Add to Watch Later
                                 </button>
                                 <button 
                                     className="favorite-button"
-                                    onClick={() => addToFavorites(film.id)}
+                                    onClick={() => handleAddFavorite(film.id)}
                                 >
                                     Add to Favorites
                                 </button>

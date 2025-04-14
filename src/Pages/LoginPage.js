@@ -2,6 +2,9 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthenticationForm from '../Components/AuthenticationForm'
 
+/*
+    Page that allows the user to login
+*/
 const LoginPage = () => {
     const navigate = useNavigate();
 

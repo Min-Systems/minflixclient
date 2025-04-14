@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import LogoutButton from '../Components/LogoutButton';
 import { addProfile, editProfile, getTokenData, isTokenValid } from '../Network';
 
+/*
+    Page that allows the user to edit and choose profiles
+*/
 const ProfilePickerPage = () => {
     const [profiles, setProfiles] = useState([]);
     const [displayName, setDisplayName] = useState('');

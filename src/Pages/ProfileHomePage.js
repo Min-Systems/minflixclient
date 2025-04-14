@@ -1,19 +1,25 @@
 import React, { useState, useEffect, use } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getTokenData, isTokenValid, getFilmData } from '../Network';
 import FilmList from '../Components/FilmList';
 import EditProfileForm from '../Components/EditProfileForm';
-import FilmWatcher from '../Components/FilmWatcher';
+import FilmWatcher from './FilmWatcher';
 
+/*
+    Page that allows users to see everything about a specific profile
+*/
 const ProfileHomePage = () => {
     const navigate = useNavigate();
     const { profileId } = useParams();
     const [displayName, setDisplayName] = useState('');
-    const [filmIds, setFilmIds] = useState([]);
+    const [favoriteFilmIds, setFavoriteFilmIds] = useState([]);
+    const [watchLaterFilmIds, setWatchLaterFilmIds] = useState([]);
 
     useEffect(() => {
         loadProfileData();
-        loadFilmData();
+        loadFavorites();
+        loadWatchLater();
     }, []);
 
     const loadProfileData = () => {
@@ -39,30 +45,36 @@ const ProfileHomePage = () => {
         }
     };
 
-    const loadFilmData = async () => {
+    const loadFavorites = () => {
         try {
-            // get film data from getfilms endpoint
-            const filmData = await getFilmData();
-            // turn the string into a js object
-            const films = JSON.parse(filmData);
+            // Get token data
+            const tokenData = getTokenData();
+            // Get the right profile object
+            const profile = tokenData.profiles.find(profile => profile.id == profileId);
+            // Get the list of favorites
+            const favoriteFilmIds = profile.favorites.map(item => item.film_id);
+            // Set the favorite film ids
+            setFavoriteFilmIds(favoriteFilmIds);
+        }
+        catch (error) {
+            console.log(`Error in loadFavorites: ${error.message}`);
+        }
+    };
 
-            /*
-            console.log(films);
-
-            // access each array element
-            films.forEach(film => {
-                console.log(`Film ID: ${film.id}, Title: ${film.title}, Name: ${film.image_name}`);
-            });
-            */
-
-            // get the film titles and put them into the state
-            const filmIds = films.map(film => film.id);
-            setFilmIds(filmIds);
-
-            // place data in localStorage
-            localStorage.setItem('films', JSON.stringify(films));
-        } catch (error) {
-            console.log(`Error in loadProfiles: ${error.message}`);
+    const loadWatchLater = () => {
+        try {
+            // Get token data
+            const tokenData = getTokenData();
+            // Get the right profile object
+            const profile = tokenData.profiles.find(profile => profile.id == profileId);
+            console.log(`The profile from load watch later: ${JSON.stringify(profile)}`);
+            // Get the list of favorites
+            const watchLaterFilmIds = profile.watch_later.map(item => item.film_id);
+            // Set the favorite film ids
+            setWatchLaterFilmIds(watchLaterFilmIds);
+        }
+        catch (error) {
+            console.log(`Error in loadWatchLater: ${error.message}`);
         }
     };
 
@@ -72,8 +84,9 @@ const ProfileHomePage = () => {
             <EditProfileForm loadProfile={loadProfileData} />
             <p>Profile for {displayName}</p>
             <button onClick={() => navigate('/profiles')}>Back to profiles</button>
-            { /*<FilmList filmIds={filmIds} isFilmBrowser={false}/> */ }
             <button onClick={() => navigate(`/browse/${profileId}`)}>Browse Films</button>
+            <FilmList bannerDisplay={'Favorite Films'} filmIds={favoriteFilmIds} isFilmBrowser={false} profileId={profileId}/>
+            <FilmList bannerDisplay={'Films to Watch Later'} filmIds={watchLaterFilmIds} isFilmBrowser={false} profileId={profileId}/>
         </div>
     );
 
