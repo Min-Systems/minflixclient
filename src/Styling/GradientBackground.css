@@ -1,0 +1,14 @@
+.gradient-background,
+.gradient-background * {
+  box-sizing: border-box;
+}
+
+.gradient-background {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom,  blue, #000000);
+    color: white;
+    text-align: center;
+  }
