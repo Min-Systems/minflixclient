@@ -79,25 +79,25 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
                         
                         {/* Conditional rendering of buttons based on isFilmBrowser prop */}
                         {isFilmBrowser && (
-                            <div className="film-actions">
-                                <button 
+                            <div className="film-actions buttonRow">
+                                <ActionButton
+                                    label="Watch Film" 
                                     className="watch-button"
                                     onClick={() => watchFilm(film.id)}
-                                >
-                                    Watch Film
-                                </button>
-                                <button 
+                                />
+                                    
+                                
+                                <ActionButton
+                                    label="Add to Watch Later" 
                                     className="watchlater-button"
-                                    onClick={() => handleAddWatchLater(film.id)}
-                                >
-                                    Add to Watch Later
-                                </button>
-                                <button 
+                                    onClick={() => addToWatchLater(film.id)}
+                                />
+
+                                <ActionButton
+                                    label="Add to Favorites" 
                                     className="favorite-button"
-                                    onClick={() => handleAddFavorite(film.id)}
-                                >
-                                    Add to Favorites
-                                </button>
+                                    onClick={() => addToFavorites(film.id)}
+                                />
                             </div>
                         )}
                     </div>
@@ -106,7 +106,9 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
                 <p>No films to display</p>
             )}
         </div>
+      
     );
+    
 };
 
 export default FilmList;

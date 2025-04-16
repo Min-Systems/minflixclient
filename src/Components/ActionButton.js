@@ -1,5 +1,5 @@
 import React from 'react';
-import './ActionButton.css';
+import actionButton from '../Styling/ActionButton.css';
 
 const ActionButton = ({ label, onClick, type = 'button', id }) => {
     return (

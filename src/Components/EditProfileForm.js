@@ -62,18 +62,21 @@ const EditProfileForm = ({ loadProfile }) => {
     };
 
     return (
-        <div id='editProfileFormComponent'>
-            <button style={buttonStyle} onClick={() => setIsVisible(true)}>Edit Profile</button>
+      
+        <div>
+            <ActionButton  label ="Edit Profile" onClick={() => setIsVisible(true)} />
+            <div id ='editProfileFormContainer'>  
             {isVisible && (
-                <form id='editProfileForm' onSubmit={handleEditProfileSubmit} style={profileFormStyle}>
+                <form id='editProfileForm' className='profile-form' onSubmit={handleEditProfileSubmit} >
                     <input
                         type='text'
                         placeholder='Enter display name'
                         name='displayname'
                         value={displayName}
                         onChange={(e) => setDisplayName(e.target.value)}
-                        required
+                        required     
                     />
+                    
                     <input
                         type='text'
                         placeholder='Enter new display name'
@@ -82,11 +85,14 @@ const EditProfileForm = ({ loadProfile }) => {
                         onChange={(e) => setNewDisplayName(e.target.value)}
                         required
                     />
-                    <button type='submit'>Submit</button>
-                    <button onClick={() => setIsVisible(false)} id='closeButton'>Close</button>
+
+                    <ActionButton label="Submit" type='submit' />
+                    <ActionButton label="Close" onClick={() => setIsVisible(false)} id='closeButton'/>                    
                 </form>
             )}
+            </div>
         </div>
+    
     );
 
 };

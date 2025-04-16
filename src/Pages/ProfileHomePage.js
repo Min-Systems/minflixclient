@@ -78,15 +78,19 @@ const ProfileHomePage = () => {
     };
 
     return (
-        <div>
-            <h2>Profile Home Page</h2>
-            <EditProfileForm loadProfile={loadProfileData} />
-            <p>Profile for {displayName}</p>
-            <button onClick={() => navigate('/profiles')}>Back to profiles</button>
-            <button onClick={() => navigate(`/browse/${profileId}`)}>Browse Films</button>
-            <FilmList bannerDisplay={'Favorite Films'} filmIds={favoriteFilmIds} isFilmBrowser={false} profileId={profileId}/>
-            <FilmList bannerDisplay={'Films to Watch Later'} filmIds={watchLaterFilmIds} isFilmBrowser={false} profileId={profileId}/>
-        </div>
+        <GradientBackground>
+          <div id ="overlay">
+            <h2 c> {displayName}'s Home Page</h2>
+
+              <EditProfileForm  loadProfile={loadProfileData} />
+            
+            <div className='buttonRow'>
+              <ActionButton label="Back to Profiles" onClick={() => navigate('/profiles')} />
+            { /*<FilmList filmIds={filmIds} isFilmBrowser={false}/> */ }
+            <ActionButton label="Browser Films" onClick={() => navigate(`/browse/${profileId}`)} />
+            </div>
+          </div>
+     </GradientBackground>
     );
 
 };

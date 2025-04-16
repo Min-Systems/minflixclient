@@ -1,19 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import AuthenticationForm from '../Components/AuthenticationForm'
+import GradientBackground from "../Components/GradientBackground";
 
-/*
-    Page that allows user to register
-*/
 const RegistrationPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <h1>Registration Page</h1> 
-            <AuthenticationForm isLogin={false} />
-            <button onClick={() => navigate('/')}>Go to Login</button>
-        </div>
+      <GradientBackground>
+         <div className="wrapper">
+            <h1 className="minflix"> MinFlix</h1>
+            <h1>Register</h1> 
+                <AuthenticationForm isLogin={false} />
+            <div className="register-link">
+              <p> Already have an account?
+                <a href="/"> Login </a>
+              </p>
+            </div>
+         </div>
+       </GradientBackground>
+
+
     );
 };
 

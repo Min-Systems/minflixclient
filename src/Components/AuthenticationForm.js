@@ -50,7 +50,7 @@ const AuthenticationForm = ({ isLogin = false }) => {
 
     return (
         <form id='registrationForm' onSubmit={handleSubmit}>
-            <p>
+            <p className='input-box'>
                 <label htmlFor='username'>Email:</label>
                 <input
                     type='email'
@@ -62,7 +62,7 @@ const AuthenticationForm = ({ isLogin = false }) => {
                     disabled={isLoading}
                 />
             </p>
-            <p>
+            <p className='input-box'>
                 <label htmlFor='password'>Password:</label>
                 <input
                     type={showPassword ? 'text' : 'password'}
@@ -75,7 +75,7 @@ const AuthenticationForm = ({ isLogin = false }) => {
                 />
             </p>
             {!isLogin && (
-                <p>
+                <p className='input-box'>
                     <label htmlFor='confirmPassword'>Confirm Password:</label>
                     <input
                         type={showPassword ? 'text' : 'password'}
@@ -87,8 +87,7 @@ const AuthenticationForm = ({ isLogin = false }) => {
                     />
                 </p>
             )}
-            <p>
-                <label htmlFor='showPassword'>Show Password </label>
+            <p class = "show-password">
                 <input
                     id='showPassword'
                     type='checkbox'
@@ -96,6 +95,7 @@ const AuthenticationForm = ({ isLogin = false }) => {
                     onChange={handleShowPasswordChange}
                     disabled={isLoading}
                 />
+                <label htmlFor='showPassword'>Show Password </label>
             </p>
             <p>
                 <button type='submit' disabled={isLoading}>

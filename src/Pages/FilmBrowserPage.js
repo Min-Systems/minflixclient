@@ -1,11 +1,10 @@
 import React, { useState, useEffect, use } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { getFilmData } from '../Network';
 import FilmList from '../Components/FilmList';
+import GradientBackground from '../Components/GradientBackground';
+import ActionButton from '../Components/ActionButton';
 
-/*
-    Page that allows a user to browse every film
-    It does this with a FilmList component which has a prop to display all films
-*/
 const FilmBrowserPage = () => {
     const navigate = useNavigate();
     const { profileId } = useParams();
@@ -31,10 +30,12 @@ const FilmBrowserPage = () => {
     };
 
     return (
-        <div>
-            <button onClick={() => { navigate(`/profile/${profileId}`) }}>Back to profile</button>
-            <FilmList bannerDisplay= {'Browse Films'} filmIds={filmIds} isFilmBrowser={true} profileId={profileId}/>
-        </div>
+        <GradientBackground>
+          <div>
+            <FilmList filmIds={filmIds} isFilmBrowser={true} />
+            <ActionButton label='Back to Porfile' onClick={() => { navigate(`/profile/${profileId}`) }} />
+          </div>
+        </GradientBackground>
     );
 };
 
