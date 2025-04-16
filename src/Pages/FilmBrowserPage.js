@@ -1,6 +1,5 @@
 import React, { useState, useEffect, use } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getFilmData } from '../Network';
 import FilmList from '../Components/FilmList';
 
 /*
@@ -18,20 +17,14 @@ const FilmBrowserPage = () => {
 
     const loadFilmData = async () => {
         try {
-            // add the ability to check if the films are added
-            // get film data from getfilms endpoint
-            const filmData = await getFilmData();
-            // turn the string into a js object
+            // get the films from memory
+            const filmData = localStorage.getItem('films');
+            // parse the films into useable format
             const films = JSON.parse(filmData);
-
-            console.log(films);
-
             // get the film titles and put them into the state
             const filmIds = films.map(film => film.id);
+            // set the film ids
             setFilmIds(filmIds);
-
-            // place data in localStorage
-            localStorage.setItem('films', JSON.stringify(films));
         } catch (error) {
             console.log(`Error in loadProfiles: ${error.message}`);
         }
@@ -39,8 +32,8 @@ const FilmBrowserPage = () => {
 
     return (
         <div>
-            <FilmList bannerDisplay= {'Browse Films'} filmIds={filmIds} isFilmBrowser={true} profileId={profileId}/>
             <button onClick={() => { navigate(`/profile/${profileId}`) }}>Back to profile</button>
+            <FilmList bannerDisplay= {'Browse Films'} filmIds={filmIds} isFilmBrowser={true} profileId={profileId}/>
         </div>
     );
 };

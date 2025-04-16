@@ -1,7 +1,7 @@
 import React, { useState, useEffect, use } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getTokenData, isTokenValid, getFilmData } from '../Network';
+import { getTokenData, isTokenValid } from '../Network';
 import FilmList from '../Components/FilmList';
 import EditProfileForm from '../Components/EditProfileForm';
 import FilmWatcher from './FilmWatcher';
@@ -67,7 +67,6 @@ const ProfileHomePage = () => {
             const tokenData = getTokenData();
             // Get the right profile object
             const profile = tokenData.profiles.find(profile => profile.id == profileId);
-            console.log(`The profile from load watch later: ${JSON.stringify(profile)}`);
             // Get the list of favorites
             const watchLaterFilmIds = profile.watch_later.map(item => item.film_id);
             // Set the favorite film ids
