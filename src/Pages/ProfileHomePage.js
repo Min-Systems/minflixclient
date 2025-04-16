@@ -5,7 +5,8 @@ import { getTokenData, isTokenValid } from '../Network';
 import FilmList from '../Components/FilmList';
 import EditProfileForm from '../Components/EditProfileForm';
 import FilmWatcher from './FilmWatcher';
-
+import GradientBackground from '../Components/GradientBackground';
+import ActionButton from '../Components/ActionButton'; 
 /*
     Page that allows users to see everything about a specific profile
 */
@@ -86,8 +87,7 @@ const ProfileHomePage = () => {
             
             <div className='buttonRow'>
               <ActionButton label="Back to Profiles" onClick={() => navigate('/profiles')} />
-            { /*<FilmList filmIds={filmIds} isFilmBrowser={false}/> */ }
-            <ActionButton label="Browser Films" onClick={() => navigate(`/browse/${profileId}`)} />
+            <ActionButton label="Browse Films" onClick={() => navigate(`/browse/${profileId}`)} />
             </div>
           </div>
      </GradientBackground>

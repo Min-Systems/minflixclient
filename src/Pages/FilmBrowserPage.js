@@ -33,7 +33,7 @@ const FilmBrowserPage = () => {
         <GradientBackground>
           <div>
             <FilmList filmIds={filmIds} isFilmBrowser={true} />
-            <ActionButton label='Back to Porfile' onClick={() => { navigate(`/profile/${profileId}`) }} />
+            <ActionButton label='Back to Profile' onClick={() => { navigate(`/profile/${profileId}`) }} />
           </div>
         </GradientBackground>
     );

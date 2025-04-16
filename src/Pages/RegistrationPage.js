@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import AuthenticationForm from '../Components/AuthenticationForm'
 import GradientBackground from "../Components/GradientBackground";
+import ActionButton from "../Components/ActionButton";
 
 const RegistrationPage = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const RegistrationPage = () => {
                 <AuthenticationForm isLogin={false} />
             <div className="register-link">
               <p> Already have an account?
-                <a href="/"> Login </a>
+                <ActionButton label='Login' onClick={() => {navigate('/')}}/>
               </p>
             </div>
          </div>

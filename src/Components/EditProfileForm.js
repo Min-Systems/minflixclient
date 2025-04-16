@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { editProfile, isTokenValid } from '../Network';
+import ActionButton from './ActionButton';
 
 /*
     This component allows a user to edit the name of a profile

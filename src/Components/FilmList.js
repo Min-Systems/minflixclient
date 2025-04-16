@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { addProfile, editProfile, getTokenData, isTokenValid, getAuthToken, addFavorite } from '../Network';
 import { addWatchLater } from '../Network';
 import network from '../Network';
+import ActionButton from './ActionButton';
 const { API_BASE_URL } = network;
 
 /*
@@ -90,13 +91,13 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
                                 <ActionButton
                                     label="Add to Watch Later" 
                                     className="watchlater-button"
-                                    onClick={() => addToWatchLater(film.id)}
+                                    onClick={() => handleAddWatchLater(film.id)}
                                 />
 
                                 <ActionButton
                                     label="Add to Favorites" 
                                     className="favorite-button"
-                                    onClick={() => addToFavorites(film.id)}
+                                    onClick={() => handleAddFavorite(film.id)}
                                 />
                             </div>
                         )}
