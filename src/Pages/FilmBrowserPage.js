@@ -5,6 +5,9 @@ import FilmList from '../Components/FilmList';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
 
+/*
+  This is the page which allows a user to browse all films
+*/
 const FilmBrowserPage = () => {
     const navigate = useNavigate();
     const { profileId } = useParams();

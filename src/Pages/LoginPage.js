@@ -4,6 +4,9 @@ import AuthenticationForm from '../Components/AuthenticationForm';
 import styles from '../Styling/LoginPage.css';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
+/*
+  This page allows the user to login
+*/
 const LoginPage = () => {
     const navigate = useNavigate();
 

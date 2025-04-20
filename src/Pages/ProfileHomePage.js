@@ -8,7 +8,7 @@ import FilmWatcher from './FilmWatcher';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton'; 
 /*
-    Page that allows users to see everything about a specific profile
+  Page that allows users to see everything about a specific profile
 */
 const ProfileHomePage = () => {
     const navigate = useNavigate();

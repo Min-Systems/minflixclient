@@ -4,6 +4,9 @@ import AuthenticationForm from '../Components/AuthenticationForm'
 import GradientBackground from "../Components/GradientBackground";
 import ActionButton from "../Components/ActionButton";
 
+/*
+  This is the page that allows a user to register an account
+*/
 const RegistrationPage = () => {
     const navigate = useNavigate();
 

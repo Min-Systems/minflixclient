@@ -4,7 +4,7 @@ import network from '../Network';
 const { API_BASE_URL } = network;
 
 /*
-    This component allows a user to stream a film
+  This component allows a user to stream a film
 */
 const FilmWatcher = () => {
     const { filmId } = useParams();

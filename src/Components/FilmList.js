@@ -7,7 +7,7 @@ import ActionButton from './ActionButton';
 const { API_BASE_URL } = network;
 
 /*
-    This component displays a list of films using a list of filmIds
+  This component displays a list of films using a list of filmIds
 */
 const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
     const [filmList, setFilmList] = useState([]);

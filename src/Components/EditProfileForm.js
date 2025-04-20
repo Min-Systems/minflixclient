@@ -4,7 +4,7 @@ import { editProfile, isTokenValid } from '../Network';
 import ActionButton from './ActionButton';
 
 /*
-    This component allows a user to edit the name of a profile
+  This component allows a user to edit the name of a profile
 */
 const EditProfileForm = ({ loadProfile }) => {
     const [isVisible, setIsVisible] = useState(false);
