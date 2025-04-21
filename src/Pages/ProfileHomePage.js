@@ -49,7 +49,8 @@ const ProfileHomePage = () => {
                     <ActionButton label='Back to Profiles' onClick={() => navigate('/profiles')} />
                     <ActionButton label='Browse Films' onClick={() => navigate(`/browse/${profileId}`)} />
                     <ActionButton label='Browse Favorites' onClick={() => navigate(`/favorite/${profileId}`)} />
-                    <ActionButton label='Browse Watch Later' onClick={() => navigate(`/watchlater/${profileId}`)}/>
+                    <ActionButton label='Browse Watch Later' onClick={() => navigate(`/watchlater/${profileId}`)} />
+                    <ActionButton label='Browse Watch History' onClick={() => navigate(`/watchhistory/${profileId}`)} />
                 </div>
             </div>
         </GradientBackground>

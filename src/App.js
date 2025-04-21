@@ -7,6 +7,7 @@ import FilmBrowserPage from './Pages/FilmBrowserPage';
 import FilmWatcher from './Pages/FilmWatcher';
 import FavoritePage from './Pages/FavoritePage';
 import WatchLaterPage from './Pages/WatchLaterPage';
+import WatchHistoryPage from './Pages/WatchHistoryPage';
 
 /*
   This is the root component
@@ -23,6 +24,7 @@ function App() {
         <Route path='/watch/:filmId' element={<FilmWatcher />} />
         <Route path='/favorite/:profileId' element={<FavoritePage />} />
         <Route path='/watchlater/:profileId' element={<WatchLaterPage />} />
+        <Route path='/watchhistory/:profileId' element={<WatchHistoryPage />} />
       </Routes>
     </Router>
   );

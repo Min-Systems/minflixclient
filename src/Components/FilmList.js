@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { addProfile, editProfile, getTokenData, isTokenValid, getAuthToken, addFavorite } from '../Network';
-import { addWatchLater } from '../Network';
-import network from '../Network';
+import { useNavigate } from 'react-router-dom';
+import { addFavorite, addWatchLater, addWatchHistory } from '../Network';
 import ActionButton from './ActionButton';
+import network from '../Network';
 const { API_BASE_URL } = network;
 
 /*
@@ -38,9 +37,23 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
         }
     };
 
-    const watchFilm = (filmId) => {
+    const watchFilm = async (filmId) => {
         // Navigate to the watch film page with the film ID
+        await handleAddWatchHistory(filmId);
+        console.log('added watch history')
         navigate(`/watch/${filmId}`, { state: { profileId } });
+    };
+
+    const handleAddWatchHistory = async (filmId) => {
+        try {
+            // Add to watch history since the user is watching the film
+            console.log(`Adding film ${filmId} to watch history`);
+            const newToken = await addWatchHistory(profileId, filmId);
+
+            localStorage.setItem('authToken', newToken);
+        } catch(error) {
+            console.error('Error adding to the watch history:', error);
+        }
     };
 
     const handleAddWatchLater = async (filmId) => {

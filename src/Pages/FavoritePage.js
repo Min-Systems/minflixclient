@@ -1,10 +1,7 @@
-import React, { useState, useEffect, use } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getTokenData, isTokenValid } from '../Network';
+import { getTokenData } from '../Network';
 import FilmList from '../Components/FilmList';
-import EditProfileForm from '../Components/EditProfileForm';
-import FilmWatcher from './FilmWatcher';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
 

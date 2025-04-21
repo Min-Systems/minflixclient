@@ -1,6 +1,5 @@
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getFilmData } from '../Network';
 import FilmList from '../Components/FilmList';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
@@ -35,7 +34,7 @@ const FilmBrowserPage = () => {
     return (
         <GradientBackground>
           <div>
-            <FilmList filmIds={filmIds} isFilmBrowser={true} />
+            <FilmList bannerDisplay={'All Films'} filmIds={filmIds} profileId={profileId} isFilmBrowser={true} />
             <ActionButton label='Back to Profile' onClick={() => { navigate(`/profile/${profileId}`) }} />
           </div>
         </GradientBackground>

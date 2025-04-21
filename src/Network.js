@@ -72,7 +72,7 @@ export const login = async (username, password) => {
   });
 };
 
-//Register a new user
+// Register a new user
 export const register = async (username, password) => {
   const bodyFields = new URLSearchParams();
   bodyFields.append('username', username);
@@ -137,6 +137,13 @@ export const addFavorite = async(profileId, filmId) => {
   }, true); // requires authentication
 };
 
+// Add a watch history
+export const addWatchHistory = async(profileId, filmId) => {
+  return apiRequest(`/add_watchhistory/${profileId}/${filmId}`, {
+   method: 'POST' 
+  }, true); // requires authentication
+}
+
 // Get JWT token data
 export const getTokenData = () => {
   try {
@@ -151,7 +158,7 @@ export const getTokenData = () => {
   }
 };
 
-//Check if the token is valid/not expired
+// Check if the token is valid/not expired
 export const isTokenValid = () => {
   try {
     const tokenData = getTokenData();
