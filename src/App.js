@@ -5,7 +5,12 @@ import ProfilePickerPage from './Pages/ProfilePickerPage';
 import ProfileHomePage from './Pages/ProfileHomePage';
 import FilmBrowserPage from './Pages/FilmBrowserPage';
 import FilmWatcher from './Pages/FilmWatcher';
+import FavoritePage from './Pages/FavoritePage';
+import WatchLaterPage from './Pages/WatchLaterPage';
 
+/*
+  This is the root component
+*/
 function App() {
   return (
     <Router>
@@ -16,6 +21,8 @@ function App() {
         <Route path='/profile/:profileId' element={<ProfileHomePage />} />
         <Route path='/browse/:profileId' element={<FilmBrowserPage />} />
         <Route path='/watch/:filmId' element={<FilmWatcher />} />
+        <Route path='/favorite/:profileId' element={<FavoritePage />} />
+        <Route path='/watchlater/:profileId' element={<WatchLaterPage />} />
       </Routes>
     </Router>
   );

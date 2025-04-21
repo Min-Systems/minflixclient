@@ -23,8 +23,6 @@ const RegistrationPage = () => {
             </div>
          </div>
        </GradientBackground>
-
-
     );
 };
 
