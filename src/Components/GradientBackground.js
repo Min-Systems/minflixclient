@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../Styling/GradientBackground.css'
 /*
   This is the component that creates a gradient background style
 */
