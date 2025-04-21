@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoutButton from '../Components/LogoutButton';
 import { addProfile, editProfile, getTokenData, isTokenValid, getFilmData } from '../Network';
-import './ProfilePickerPage.css';
+import '../Styling/ProfilePickerPage.css';
 import ActionButton from '../Components/ActionButton';
 import GradientBackground from '../Components/GradientBackground';
 
