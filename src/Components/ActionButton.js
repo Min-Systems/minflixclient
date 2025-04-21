@@ -1,6 +1,8 @@
 import React from 'react';
-import './ActionButton.css';
-
+import '../Styling/ActionButton.css';
+/*
+  This component is the button used for most other components
+*/
 const ActionButton = ({ label, onClick, type = 'button', id }) => {
     return (
       <button

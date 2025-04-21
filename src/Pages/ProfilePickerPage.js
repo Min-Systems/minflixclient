@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoutButton from '../Components/LogoutButton';
-import { addProfile, editProfile, getTokenData, isTokenValid } from '../Network';
-import './ProfilePickerPage.css';
+import { addProfile, editProfile, getTokenData, isTokenValid, getFilmData } from '../Network';
+import '../Styling/ProfilePickerPage.css';
 import ActionButton from '../Components/ActionButton';
 import GradientBackground from '../Components/GradientBackground';
 
 /*
-    Page that allows the user to edit and choose profiles
+  Page that allows the user to edit and choose profiles
 */
 const ProfilePickerPage = () => {
     const [profiles, setProfiles] = useState([]);
@@ -19,7 +19,21 @@ const ProfilePickerPage = () => {
 
     useEffect(() => {
         loadProfiles();
+        loadFilmData();
     }, []);
+
+    const loadFilmData = async () => {
+        try {
+            // get film data from getfilms endpoint
+            const filmData = await getFilmData();
+            // turn the string into a js object
+            const films = JSON.parse(filmData);
+            // place data in localStorage
+            localStorage.setItem('films', JSON.stringify(films));
+        } catch (error) {
+            console.log(`Error in loadProfiles: ${error.message}`);
+        }
+    };
 
     const loadProfiles = () => {
         try {
@@ -34,8 +48,6 @@ const ProfilePickerPage = () => {
 
             // Set the profile data
             setProfiles(tokenData.profiles);
-            // Close the form
-
         } catch (error) {
             console.log(`Error in loadProfiles: ${error.message}`);
         }

@@ -1,25 +1,20 @@
-import React, { useState, useEffect, use } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getTokenData, isTokenValid, getFilmData } from '../Network';
-import FilmList from '../Components/FilmList';
+import { getTokenData, isTokenValid } from '../Network';
 import EditProfileForm from '../Components/EditProfileForm';
-import FilmWatcher from './FilmWatcher';
+import GradientBackground from '../Components/GradientBackground';
+import ActionButton from '../Components/ActionButton';
 
 /*
-    Page that allows users to see everything about a specific profile
+  Page that allows users to see everything about a specific profile
 */
 const ProfileHomePage = () => {
     const navigate = useNavigate();
     const { profileId } = useParams();
     const [displayName, setDisplayName] = useState('');
-    const [favoriteFilmIds, setFavoriteFilmIds] = useState([]);
-    const [watchLaterFilmIds, setWatchLaterFilmIds] = useState([]);
 
     useEffect(() => {
         loadProfileData();
-        loadFavorites();
-        loadWatchLater();
     }, []);
 
     const loadProfileData = () => {
@@ -45,49 +40,20 @@ const ProfileHomePage = () => {
         }
     };
 
-    const loadFavorites = () => {
-        try {
-            // Get token data
-            const tokenData = getTokenData();
-            // Get the right profile object
-            const profile = tokenData.profiles.find(profile => profile.id == profileId);
-            // Get the list of favorites
-            const favoriteFilmIds = profile.favorites.map(item => item.film_id);
-            // Set the favorite film ids
-            setFavoriteFilmIds(favoriteFilmIds);
-        }
-        catch (error) {
-            console.log(`Error in loadFavorites: ${error.message}`);
-        }
-    };
-
-    const loadWatchLater = () => {
-        try {
-            // Get token data
-            const tokenData = getTokenData();
-            // Get the right profile object
-            const profile = tokenData.profiles.find(profile => profile.id == profileId);
-            console.log(`The profile from load watch later: ${JSON.stringify(profile)}`);
-            // Get the list of favorites
-            const watchLaterFilmIds = profile.watch_later.map(item => item.film_id);
-            // Set the favorite film ids
-            setWatchLaterFilmIds(watchLaterFilmIds);
-        }
-        catch (error) {
-            console.log(`Error in loadWatchLater: ${error.message}`);
-        }
-    };
-
     return (
-        <div>
-            <h2>Profile Home Page</h2>
-            <EditProfileForm loadProfile={loadProfileData} />
-            <p>Profile for {displayName}</p>
-            <button onClick={() => navigate('/profiles')}>Back to profiles</button>
-            <button onClick={() => navigate(`/browse/${profileId}`)}>Browse Films</button>
-            <FilmList bannerDisplay={'Favorite Films'} filmIds={favoriteFilmIds} isFilmBrowser={false} profileId={profileId}/>
-            <FilmList bannerDisplay={'Films to Watch Later'} filmIds={watchLaterFilmIds} isFilmBrowser={false} profileId={profileId}/>
-        </div>
+        <GradientBackground>
+            <div id='overlay'>
+                <h2 c> {displayName}'s Home Page</h2>
+                <EditProfileForm loadProfile={loadProfileData} />
+                <div className='buttonRow'>
+                    <ActionButton label='Back to Profiles' onClick={() => navigate('/profiles')} />
+                    <ActionButton label='Browse Films' onClick={() => navigate(`/browse/${profileId}`)} />
+                    <ActionButton label='Browse Favorites' onClick={() => navigate(`/favorite/${profileId}`)} />
+                    <ActionButton label='Browse Watch Later' onClick={() => navigate(`/watchlater/${profileId}`)} />
+                    <ActionButton label='Browse Watch History' onClick={() => navigate(`/watchhistory/${profileId}`)} />
+                </div>
+            </div>
+        </GradientBackground>
     );
 
 };
