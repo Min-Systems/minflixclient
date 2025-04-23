@@ -12,7 +12,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     return (
-     <GradientBackground>
+     <div className='gradient-background'>
       <div className='wrapper'>
         <h1 className='minflix'> MinFlix</h1>
         <h1>Login </h1>
@@ -23,7 +23,7 @@ const LoginPage = () => {
         </p>
         </div>
       </div>
-     </GradientBackground>
+     </div>
     );
 }
 

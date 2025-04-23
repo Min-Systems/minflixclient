@@ -1,4 +1,5 @@
-  .gradient-background {
+ /* Form Backround*/
+ .gradient-background {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -8,6 +9,7 @@
         color: white;
 }
 
+/* Centering the Buttons*/
 .button{
     position: absolute;
     transform: TRANSLATE(-50%, -50%);
@@ -15,24 +17,28 @@
     text-align: center;
 }
 
+/* Centering the MinFlix Logo */
 .wrapper .minflix{
     text-align: center;
     color: #ffffff;
     font-size: 50px;
 }
 
+/* Centering the Register Buttons */
 .registerPos {
     position: absolute;
     transform: TRANSLATE(-50%, -50%);
     padding: 10px 20px;
 }
 
+/* Centering the Login Button */
 .loginPos {
     position: absolute;
     transform: TRANSLATE(-50%, -50%);
     padding: 10px 20px;
 }
 
+/* Centering the Form */
 .center{
     position: absolute;
     top: 50%;
@@ -41,12 +47,14 @@
     background-color: #6c3737;
 }
 
+/* Text formatting */
 h1{
     text-align: center;
     color: #ffffff;
     
 }
 
+/* Centering the Form */
 .wrapper {
     width : 420px;
     background: transparent;
@@ -61,6 +69,7 @@ h1{
     position: relative;    
 }
 
+/* Global Styles */
 *{
     margin: 0;
     padding: 0;
@@ -68,6 +77,7 @@ h1{
     font-family: 'Poppins', sans-serif;
 }
 
+/* checkbox spacing */
 .input-box{
     width: 100%;
     height: 50px;
@@ -75,6 +85,7 @@ h1{
     
 }
 
+/* Input field */
 .input-box input{
     width: 100%;
     height: 100%;
@@ -89,10 +100,12 @@ h1{
     
 }
 
+/* Placeholder text color */
 .input-box input::placeholder{
     color: #fff;
 }
 
+/* Focused input border color */
 .input-box i {
     position: absolute;
     right: 20px;
@@ -101,6 +114,7 @@ h1{
     font-size: 20px;
 }
 
+/* Show password checkbox css*/
 .wrapper .show-password{
     display: flex;
     font-size: 14.5px;
@@ -108,12 +122,14 @@ h1{
     margin: 15px 0 15px;
 }
 
+/* Show password input */
 .show-password input{
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
 
+/* Button Spacing  */
 .wrapper button {
     width: 100%;
     height: 45px;
@@ -130,24 +146,24 @@ h1{
     
 }
 
+/* register format text*/
 .wrapper .register-link{
     font-size: 14.5 px;
     text-align: center;
     margin: 20px 0 15px;
 }
 
+/* register link text style*/
 .register-link p a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
 }
 
-.register-link p a:hover
-{
-    text-decoration: underline;
-}
 
-@media (max-width: 420px) {
+
+ /*Responsive Design */
+@media (max-width: 445px) {
     .wrapper {
         width: 90%;
         padding: 20px 15px;
@@ -174,4 +190,18 @@ h1{
         width: 95%;
         padding: 20px;
     }
+    
+    .wrapper .show-password{
+        display: flex;
+        font-size: 14.5px;
+        padding: auto;
+        margin: 15px 0 15px;
+    }
+
+    .input-box{
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    
+}
 }

@@ -3,6 +3,7 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import network from '../Network';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
+import '../Styling/FilmWatcher.css';
 const { API_BASE_URL } = network;
 
 /*

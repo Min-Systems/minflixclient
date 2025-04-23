@@ -1,0 +1,38 @@
+.gradient-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, blue, #000);
+    color: white;
+    padding: 20px;
+  }
+  
+  #filmWatcher {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+  }
+  
+  #filmWatcher h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  #filmWatcher video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Responsive for screens 600px and below */
+  @media (max-width: 600px) {
+    #filmWatcher h2 {
+      font-size: 1.5rem;
+    }
+  
+    #filmWatcher video {
+      max-width: 100%;
+    }
+  }
