@@ -1,0 +1,4 @@
+.thumbnail{
+    max-width: 100%; /* Image scales within its container */
+    height: auto; /* Maintain aspect ratio */
+}
