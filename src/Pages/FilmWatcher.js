@@ -4,6 +4,7 @@ import network from '../Network';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
 import '../Styling/FilmWatcher.css';
+import Navbar from '../Components/Navbar';
 const { API_BASE_URL } = network;
 
 /*
@@ -37,7 +38,9 @@ const FilmWatcher = () => {
     }, [filmId]); // Only run when filmId changes
 
     return (
+       
         <GradientBackground>
+         <Navbar/>
         <div id='filmWatcher'>
             {filmName ? (
                 <>
@@ -52,6 +55,7 @@ const FilmWatcher = () => {
             )}
         </div>
         </GradientBackground>
+      
     );
 };
 

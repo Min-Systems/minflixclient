@@ -25,7 +25,7 @@
     flex-direction: column;
     min-height: 100vh;
     overflow: hidden;
-    justify-content: space-between; /* spreads top, middle, bottom */
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     padding: 20px;
@@ -39,9 +39,19 @@
     justify-content: center;
   }
 
+  /* Profile List - added for horizontal layout */
+  #overlay #profileList {
+    display: flex;
+    flex-direction: row; /* ✅ horizontal */
+    flex-wrap: wrap;     /* ✅ wrap if needed */
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+    list-style: none;
+    padding: 0;
+  }
 
-
-
+  /* Profile Buttons */
   #overlay #profileButton {
     width: 120px;
     height: 120px;
@@ -95,13 +105,14 @@
     margin-bottom: 10px;
   }
 
-/* Logout Button */
+  /* Logout Button */
   #logoutButtonContainer {
     display: flex;
     justify-content: center;
     margin-top: 10px;
   }
 }
+
 
 /* Small Screens - up to 649px (responsive to mobile*/
 @media (max-width: 649px) {
@@ -111,8 +122,13 @@
   }
 
   #overlay #profileList {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row; /* ✅ horizontal */
+    flex-wrap: wrap; /* ✅ allows wrapping if needed */
+    justify-content: center;
     gap: 20px;
+    padding: 0;
+    margin: 20px 0;
   }
 
   #overlay #profileButton {
@@ -124,17 +140,19 @@
     background: transparent;
     color: white;
   }
+
   #overlay {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     overflow: hidden;
-    justify-content: space-between; /* spreads top, middle, bottom */
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     padding: 20px;
   }
 
+  /* Keep your form styles */
   #overlay #editProfileForm,
   #overlay #addProfileForm {
     background-color: #1a1a1a;
