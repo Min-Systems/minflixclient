@@ -4,6 +4,7 @@ import { getTokenData, isTokenValid } from '../Network';
 import EditProfileForm from '../Components/EditProfileForm';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
+import FilmSearchForm from '../Components/FilmSearchForm';
 
 /*
   Page that allows users to see everything about a specific profile
@@ -43,7 +44,7 @@ const ProfileHomePage = () => {
     return (
         <GradientBackground>
             <div id='overlay'>
-                <h2 c> {displayName}'s Home Page</h2>
+                <h2> {displayName}'s Home Page</h2>
                 <EditProfileForm loadProfile={loadProfileData} />
                 <div className='buttonRow'>
                     <ActionButton label='Back to Profiles' onClick={() => navigate('/profiles')} />
@@ -52,6 +53,7 @@ const ProfileHomePage = () => {
                     <ActionButton label='Browse Watch Later' onClick={() => navigate(`/watchlater/${profileId}`)} />
                     <ActionButton label='Browse Watch History' onClick={() => navigate(`/watchhistory/${profileId}`)} />
                 </div>
+                <FilmSearchForm profileId={profileId}/>
             </div>
         </GradientBackground>
     );

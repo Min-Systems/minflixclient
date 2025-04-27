@@ -116,6 +116,21 @@ export const editProfile = async (displayName, newDisplayName) => {
   }, true); // requires authentication
 };
 
+// Search for a film
+export const search = async (profile_id, query) => {
+  const bodyFields = new URLSearchParams();
+  bodyFields.append('profile_id', profile_id);
+  bodyFields.append('query', query);
+
+  return apiRequest('/search', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: bodyFields
+  }, true); // requires authentication
+};
+
 // Get film data
 export const getFilmData = async () => {
   return apiRequest('/getfilms', {

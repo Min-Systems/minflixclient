@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login, register } from '../Network'; // Import the API functions
+import { login, register } from '../Network';
 
 /*
   This component allows a user to login or register with a form
