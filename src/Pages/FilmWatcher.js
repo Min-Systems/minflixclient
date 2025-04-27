@@ -40,7 +40,8 @@ const FilmWatcher = () => {
     return (
        
         <GradientBackground>
-         <Navbar/>
+         <Navbar profileId={profileId} filmId={filmId} />
+        
         <div id='filmWatcher'>
             {filmName ? (
                 <>
@@ -48,12 +49,13 @@ const FilmWatcher = () => {
                     <video width='1200' controls muted='muted'>
                         <source src={source} type='video/mp4' />
                     </video>
-                    <ActionButton onClick={() => navigate(`/browse/${profileId}`)} label={"Back to Films"}/>
+                   
                 </>
             ) : (
                 <p>Loading film...</p>
             )}
-        </div>
+            </div>
+       
         </GradientBackground>
       
     );

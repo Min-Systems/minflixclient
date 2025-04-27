@@ -30,14 +30,34 @@
   justify-content: space-between;
   align-items: center;
 }
+.navbar-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+.navbar-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+/* New flex container for links + badge */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 
 .navbar-logo {
-  font-size: 28px; /* Heading-style size */
+  font-size: 35px; /* Heading-style size */
   font-weight: 700; /* Bold like <h2> */
   line-height: 1.2;
   color: #ffffff;
   padding: 20px;
-  padding-top: 30px;
+  padding-top: 45px;
   margin-right: auto;
   text-decoration: none;
   cursor: pointer;
@@ -48,18 +68,19 @@
 
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: nowrap;
   white-space: nowrap;
 }
 
 .nav-link {
-  font-size: 20px; /* Slightly smaller heading */
+  font-size: 25px; /* Slightly smaller heading */
   font-weight: 600;
   line-height: 1.2;
   color: #a8afbd;
-  padding: 20px;
-  padding-top: 30px;
+  padding: 2px;
+  padding-top: 25px;
+  padding-right: 90px;
   text-decoration: none;
   cursor: pointer;
   border-radius: 8px;
@@ -85,6 +106,8 @@
   pointer-events: none;
 }
 
+
+
 /* Mobile Responsive */
 @media (max-width: 720px) {
   .nav-link {
@@ -97,3 +120,79 @@
     padding: 1px;
   }
 }
+
+/* --- NEWLY ADDED ONLY FOR PROFILE BADGE & DROPDOWN --- */
+
+/* Profile circle container */
+.navbar-profile-container {
+  position: relative;
+  display: flex;
+  margin-left: auto;
+  padding-top: 30px;
+  padding-right: 30px;
+}
+
+/* Profile circle badge */
+.navbar-profile-badge {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #00bfff;
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: auto;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+/* Hover effect for profile badge */
+.navbar-profile-badge:hover {
+  transform: scale(1.05);
+  border-color: #1e90ff;
+  background-color: #1e90ff;
+}
+
+/* Dropdown */
+.navbar-dropdown {
+  position: absolute;
+  top: 85px;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #00bfff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+.navbar-dropdown li {
+  list-style: none;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.dropdown-link:hover {
+  background-color: #1e90ff;
+}
+
+/* Responsive adjustment for profile circle */
+@media (max-width: 649px) {
+  .navbar-profile-badge {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+
