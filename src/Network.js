@@ -159,6 +159,13 @@ export const addWatchHistory = async(profileId, filmId) => {
   }, true); // requires authentication
 }
 
+// Get recommended films
+export const getRecommendations = async (profileId) => {
+  return apiRequest(`/recommendations/${profileId}`, {
+    method: 'GET'
+  }, true);
+}
+
 // Get JWT token data
 export const getTokenData = () => {
   try {
