@@ -111,8 +111,8 @@
 /* Mobile Responsive */
 @media (max-width: 720px) {
   .nav-link {
-    font-size: 14px;
-    padding: 1px;
+    font-size: 16px;
+    padding: 35px;
   }
 
   .navbar-logo {
@@ -163,7 +163,7 @@
   top: 85px;
   right: 0;
   background: #1a1a1a;
-  border: 1px solid #00bfff;
+  border: 1px solid #1e90ff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -213,7 +213,7 @@
 .navbar-search-input {
   padding: 6px 12px;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid #00bfff;
+  border: 1px solid #1e90ff;
   border-radius: 20px;
   color: white;
   font-size: 16px;
@@ -222,10 +222,12 @@
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Placeholder text color */
 .navbar-search-input::placeholder {
   color: #aaa;
 }
 
+/* Search input focus effect */
 .navbar-search-input:focus {
   background: rgba(255, 255, 255, 0.2);
   border-color: white;
@@ -237,7 +239,7 @@
   top: 84%; /* slightly below input */
   left: 0;
   background-color: #1a1a1a;
-  border: 1px solid #00bfff;
+  border: 1px solid #1e90ff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   width: 180px;
@@ -249,13 +251,14 @@
   padding: 10px 0;
 }
 
+/* Dropdown items */
 .navbar-search-dropdown li {
   padding: 0px 1px;
   color: white;
 
 }
 
-
+/*search button */
 .navbar-search-button {
   margin-top: 10px;
   padding: 6px;
@@ -272,6 +275,7 @@
   transition: background-color 0.3s ease;
 }
 
+/* Dropdown item hover effect */
 .navbar-search-button:hover {
-  background-color: #00bfff;
+  background-color: #1e90ff;
 }

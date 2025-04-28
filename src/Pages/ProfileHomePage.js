@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getTokenData, isTokenValid } from '../Network';
+import { getTokenData, isTokenValid, getRecommendations } from '../Network';
 import EditProfileForm from '../Components/EditProfileForm';
 import GradientBackground from '../Components/GradientBackground';
 import FilmList from '../Components/FilmList';
@@ -9,6 +9,7 @@ import '../Styling/ProfileHomePage.css';
 
 const ProfileHomePage = () => {
     const navigate = useNavigate();
+    const formRef = useRef(null);
     const [showEditForm, setShowEditForm] = useState(false);
     const { profileId } = useParams();
     const [displayName, setDisplayName] = useState('');
@@ -16,9 +17,11 @@ const ProfileHomePage = () => {
     const [favoriteFilmIds, setFavoriteFilmIds] = useState([]);
     const [watchHistoryFilmIds, setWatchHistoryFilmIds] = useState([]);
     const [watchLaterFilmIds, setWatchLaterFilmIds] = useState([]);
+    const [recommendedFilmIds, setRecommendedFilmIds] = useState([]);
 
     useEffect(() => {
         loadProfileData();
+        fetchRecommendations();
         loadFavorites();
         loadWatchHistory();
         loadWatchLater();
@@ -40,6 +43,39 @@ const ProfileHomePage = () => {
             console.log(`Error loading profile: ${error.message}`);
         }
     };
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (formRef.current && !formRef.current.contains(event.target)) {
+                setShowEditForm(false);
+            }
+        }
+    
+        if (showEditForm) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+    
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [showEditForm]);
+
+    // Fetch recommendations from the server
+    const fetchRecommendations = async () => {
+        try {
+            const response = await getRecommendations(profileId);
+            //backend returns json response with film object
+            const recommendedFilms = JSON.parse(response);
+            const filmIds = recommendedFilms.map(film => film.id);
+            setRecommendedFilmIds(filmIds);
+        } catch (error) {
+            console.error('Error fetching recommendations:', error);
+        }
+    };
+
+
 
     const loadFavorites = () => {
         try {
@@ -95,9 +131,7 @@ const ProfileHomePage = () => {
                         </div>
 
                         <div className="edit-profile-wrapper">
-
-                            {/* Form appears above button */}
-                            <div className={`edit-profile-form-popup ${showEditForm ? 'show' : 'hide'}`}>
+                            <div ref={formRef} className={`edit-profile-form-popup ${showEditForm ? 'show' : 'hide'}`}>
                                 {showEditForm && (
                                     <EditProfileForm
                                         loadProfile={loadProfileData}
@@ -105,7 +139,6 @@ const ProfileHomePage = () => {
                                     />
                                 )}
                             </div>
-
                         </div>
 
                         {/* Nav Links */}
@@ -117,6 +150,15 @@ const ProfileHomePage = () => {
                             >
                                 Favorites
                             </button>
+
+                            <button
+                                className="section-link"
+                                data-selected={activeSection === 'recommendations'}
+                                onClick={() => setActiveSection('recommendations')}
+                            >
+                                Recommendations
+                            </button>
+
                             <button
                                 className="section-link"
                                 data-selected={activeSection === 'watch-later'}
@@ -124,6 +166,7 @@ const ProfileHomePage = () => {
                             >
                                 Watch Later
                             </button>
+                            
                             <button
                                 className="section-link"
                                 data-selected={activeSection === 'watch-history'}
@@ -132,15 +175,9 @@ const ProfileHomePage = () => {
                                 Watch History
                             </button>
 
-                            {/* *********************UNCOMMENT ONCE RECOMMENDATION IS IMPLEMENTED************************
-                            <button
-                                className="section-link"
-                                data-selected={activeSection === 'recommendations'}
-                                onClick={() => setActiveSection('recommendations')}
-                            >
-                                Recommendations
-                            </button>
-                            */}
+                        
+                            
+                            
 
                         </div>
 
@@ -148,30 +185,32 @@ const ProfileHomePage = () => {
 
                         {/* Sections appear below nav links */}
                         <div className="content-wrapper">
+
+                                     {/* Favorites section */}
                             {activeSection === 'favorites' && (
                                 <section className="favorites-section">
                                     <FilmList bannerDisplay={''} filmIds={favoriteFilmIds} isFilmBrowser={false} />
                                 </section>
                             )}
+                                    {/* Recommendations section */}
+                            {activeSection === 'recommendations' && (
+                                <section className="recommendations-section">
+                                    <FilmList bannerDisplay={''} filmIds={recommendedFilmIds} isFilmBrowser={false} />
+                                </section>  
+                            )}
+                                    {/* Watch History section */}
                             {activeSection === 'watch-history' && (
                                 <section className="watch-history-section">
                                     <FilmList bannerDisplay={''} filmIds={watchHistoryFilmIds} isFilmBrowser={false} />
                                 </section>
                             )}
+                                    {/* Watch Later section */}
                             {activeSection === 'watch-later' && (
                                 <section className="watch-later-section">
                                     <FilmList bannerDisplay={''} filmIds={watchLaterFilmIds} isFilmBrowser={false} />
                                 </section>
-                            )}
 
-                            {/* ************************UNCOMMENT ONCE RECOMMENDATION IS IMPLEMENTED************************ 
-                            {activeSection === 'recommendations' && (
-                                <section className="recommendations-section">
-                                    <FilmList bannerDisplay={''} filmIds={recommendationsFilmIds} isFilmBrowser={false} />
-                                </section>  
                             )}
-                                */}
-
 
                         </div>
 

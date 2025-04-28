@@ -37,3 +37,35 @@
       max-width: 100%;
     }
   }
+/* Wrapper around video */
+.video-wrapper {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Overlay controls container */
+.video-overlay-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+/* Back button style */
+.back-button {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
