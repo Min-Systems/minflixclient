@@ -5,7 +5,6 @@ import { addProfile, editProfile, getTokenData, isTokenValid, getFilmData } from
 import '../Styling/ProfilePickerPage.css';
 import ActionButton from '../Components/ActionButton';
 import GradientBackground from '../Components/GradientBackground';
-
 /*
   Page that allows the user to edit and choose profiles
 */

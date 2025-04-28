@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { addFavorite, addWatchLater, addWatchHistory } from '../Network';
 import ActionButton from './ActionButton';
 import network from '../Network';
+import FilmBrowserPage from '../Styling/FilmBrowserPage.css';
 const { API_BASE_URL } = network;
 
 /*
@@ -85,7 +86,7 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
                 filmList.map((film) => (
                     <div key={film.id} className='filmItem'>
                         <h3>{film.title}</h3>
-                        <img
+                        <img className='thumbnail'
                             src={`${API_BASE_URL}/images/${film.image_name}`}
                             alt={film.title}
                             loading='lazy'

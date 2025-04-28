@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ActionButton from './ActionButton';
 import { login, register } from '../Network'; // Import the API functions
 
 /*
@@ -98,9 +99,7 @@ const AuthenticationForm = ({ isLogin = false }) => {
                 <label htmlFor='showPassword'>Show Password </label>
             </p>
             <p>
-                <button type='submit' disabled={isLoading}>
-                    {isLoading ? 'Processing...' : (isLogin ? 'Login' : 'Register')}
-                </button>
+                <ActionButton label=  {isLoading ? 'Processing...' : (isLogin ? 'Login' : 'Register')} type='submit' disabled={isLoading}/>
             </p>
         </form>
     );
