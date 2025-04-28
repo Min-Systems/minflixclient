@@ -58,8 +58,8 @@ const Navbar = () => {
         { path: `/watchlater/${profileId}`, label: 'Watch Later' },
         { path: `/watchhistory/${profileId}`, label: 'Watch History' },
         { path: `/`, label: 'Logout' },
-        
-        
+
+
       ];
     }
 
@@ -70,7 +70,7 @@ const Navbar = () => {
         { path: `/watchlater/${profileId}`, label: 'Watch Later' },
         { path: `/watchhistory/${profileId}`, label: 'Watch History' },
         { path: `/`, label: 'Logout' },
-          
+
       ];
     }
 
@@ -81,7 +81,7 @@ const Navbar = () => {
         { path: `/watchlater/${profileId}`, label: 'Watch Later' },
         { path: `/watchhistory/${profileId}`, label: 'Watch History' },
         { path: `/`, label: 'Logout' },
-    
+
       ];
     }
 
@@ -102,46 +102,46 @@ const Navbar = () => {
   }, []);
 
   return (
-<nav className={`navbar ${showNavbar ? 'active' : 'hidden'}`}>
-  <div className="navbar-top">
-    <Link to="/" className="navbar-logo">MinFlix</Link>
+    <nav className={`navbar ${showNavbar ? 'active' : 'hidden'}`}>
+      <div className="navbar-top">
+        <Link to="/" className="navbar-logo">MinFlix</Link>
 
-    {/* Always show Movies link */}
-    {profileId && (
-      <div className="navbar-center">
-        <Link to={`/browse/${profileId}`} className="nav-link">
-          Movies
-        </Link>
-      </div>
-    )}
-
-    <div className="navbar-right">
-      {displayName && (
-        <div className="navbar-profile-container">
-          <div className="navbar-profile-badge" onClick={() => setDropdownOpen(!dropdownOpen)}>
-            {displayName[0]}
+        {/* Always show Movies link */}
+        {profileId && (
+          <div className="navbar-center">
+            <Link to={`/browse/${profileId}`} className="nav-link">
+              Movies
+            </Link>
           </div>
+        )}
 
-          {dropdownOpen && (
-            <ul className="navbar-dropdown">
-              {links.map((link, idx) => (
-                <li key={idx}>
-                  <Link
-                    to={link.path}
-                    className="dropdown-link"
-                    onClick={() => setDropdownOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <div className="navbar-right">
+          {displayName && (
+            <div className="navbar-profile-container">
+              <div className="navbar-profile-badge" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                {displayName[0]}
+              </div>
+
+              {dropdownOpen && (
+                <ul className="navbar-dropdown">
+                  {links.map((link, idx) => (
+                    <li key={idx}>
+                      <Link
+                        to={link.path}
+                        className="dropdown-link"
+                        onClick={() => setDropdownOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           )}
         </div>
-      )}
-    </div>
-  </div>
-</nav>
+      </div>
+    </nav>
   );
 };
 
