@@ -4,6 +4,7 @@ import { getTokenData } from '../Network';
 import FilmList from '../Components/FilmList';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
+import Navbar from '../Components/Navbar';
 
 /*
   This is the page that allows a user to see their films to watch later 
@@ -35,8 +36,8 @@ const WatchLaterPage = () => {
 
     return (
         <GradientBackground>
+            <Navbar />
             <FilmList bannerDisplay={'Watch Later'} filmIds={watchLaterFilmIds} isFilmBrowser={false}/>
-            <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`) } />
         </GradientBackground>
     );
 };

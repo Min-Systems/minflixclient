@@ -1,148 +1,207 @@
-  .gradient-background {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        overflow: hidden;
-        background: linear-gradient(to bottom, blue, #000000);
-        color: white;
-}
+ /* Form Backround*/
+ .gradient-background {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     overflow: hidden;
+     background: linear-gradient(to bottom, blue, #000000);
+     color: white;
+ }
 
-.button{
-    position: absolute;
-    transform: TRANSLATE(-50%, -50%);
-    padding: 10px 20px;
-    text-align: center;
-}
+ /* Centering the Buttons*/
+ .button {
+     position: absolute;
+     transform: TRANSLATE(-50%, -50%);
+     padding: 10px 20px;
+     text-align: center;
+ }
 
-.wrapper .minflix{
-    text-align: center;
-    color: #ffffff;
-    font-size: 50px;
-}
+ /* Centering the MinFlix Logo */
+ .wrapper .minflix {
+     text-align: center;
+     color: #ffffff;
+     font-size: 50px;
+ }
 
-.registerPos {
-    position: absolute;
-    transform: TRANSLATE(-50%, -50%);
-    padding: 10px 20px;
-}
+ /* Centering the Register Buttons */
+ .registerPos {
+     position: absolute;
+     transform: TRANSLATE(-50%, -50%);
+     padding: 10px 20px;
+ }
 
-.loginPos {
-    position: absolute;
-    transform: TRANSLATE(-50%, -50%);
-    padding: 10px 20px;
-}
+ /* Centering the Login Button */
+ .loginPos {
+     position: absolute;
+     transform: TRANSLATE(-50%, -50%);
+     padding: 10px 20px;
+ }
 
-.center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #6c3737;
-}
+ /* Centering the Form */
+ .center {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: #6c3737;
+ }
 
-h1{
-    text-align: center;
-    color: #ffffff;
-    
-}
+ /* Text formatting */
+ h1 {
+     text-align: center;
+     color: #ffffff;
 
-.wrapper {
-    width : 420px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    border-radius: 10px;
-    padding: 30px 20px;
-    backdrop-filter: blur(40px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    position: center;
-    margin: 0 auto;
-    position: relative;    
-}
+ }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+ /* Centering the Form */
+ .wrapper {
+     width: 420px;
+     background: transparent;
+     border: 2px solid rgba(255, 255, 255, 0.2);
+     color: white;
+     border-radius: 10px;
+     padding: 30px 20px;
+     backdrop-filter: blur(40px);
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
-.input-box{
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-    
-}
+     margin: 0 auto;
+     position: relative;
+ }
 
-.input-box input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #ffffff;
-    padding: 0 20px;
-    
-}
+ /* Global Styles */
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+ }
 
-.input-box input::placeholder{
-    color: #fff;
-}
+ /* checkbox spacing */
+ .input-box {
+     width: 100%;
+     height: 50px;
+     margin: 30px 0;
 
-.input-box i {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
+ }
 
-.wrapper .show-password{
-    display: flex;
-    font-size: 14.5px;
-    padding: auto;
-    margin: 15px 0 15px;
-}
+ /* Input field */
+ .input-box input {
+     width: 100%;
+     height: 100%;
+     background: transparent;
+     border: none;
+     outline: none;
+     border: 2px solid rgba(255, 255, 255, 0.2);
+     border-radius: 40px;
+     font-size: 16px;
+     color: #ffffff;
+     padding: 0 20px;
 
-.show-password input{
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
+ }
 
-.wrapper button {
-    width: 100%;
-    height: 45px;
-    background: #ffff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    font-size: 16px;
-    box-shadow: 0 0 10px rgba(250, 250, 250, 0.1);
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    
-}
+ /* Placeholder text color */
+ .input-box input::placeholder {
+     color: #fff;
+ }
 
-.wrapper .register-link{
-    font-size: 14.5 px;
-    text-align: center;
-    margin: 20px 0 15px;
-}
+ /* Focused input border color */
+ .input-box i {
+     position: absolute;
+     right: 20px;
+     top: 50%;
+     transform: translateY(-50%);
+     font-size: 20px;
+ }
 
-.register-link p a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
+ /* Show password checkbox css*/
+ .wrapper .show-password {
+     display: flex;
+     font-size: 14.5px;
+     padding: auto;
+     margin: 15px 0 15px;
+ }
 
-.register-link p a:hover
-{
-    text-decoration: underline;
-}
+ /* Show password input */
+ .show-password input {
+     width: 20px;
+     height: 20px;
+     margin-right: 10px;
+ }
+
+ /* Button Spacing  */
+ .wrapper button {
+     width: 100%;
+     height: 45px;
+     background: #ffff;
+     border: none;
+     outline: none;
+     border-radius: 40px;
+     font-size: 16px;
+     box-shadow: 0 0 10px rgba(250, 250, 250, 0.1);
+     font-weight: 600;
+     color: #333;
+     cursor: pointer;
+     transition: all 0.3s ease;
+
+ }
+
+ /* register format text*/
+ .wrapper .register-link {
+     font-size: 14.5 px;
+     text-align: center;
+     margin: 20px 0 15px;
+ }
+
+ /* register link text style*/
+ .register-link p a {
+     color: #fff;
+     text-decoration: none;
+     font-weight: 600;
+ }
+
+
+
+ /*Responsive Design */
+ @media (max-width: 445px) {
+     .wrapper {
+         width: 90%;
+         padding: 20px 15px;
+     }
+
+     .wrapper .minflix {
+         font-size: 36px;
+     }
+
+     .input-box {
+         margin: 20px 0;
+     }
+
+     .wrapper button {
+         height: 40px;
+         font-size: 14px;
+     }
+
+     .register-link {
+         font-size: 12px;
+     }
+
+     .center {
+         width: 95%;
+         padding: 20px;
+     }
+
+     .wrapper .show-password {
+         display: flex;
+         font-size: 14.5px;
+         padding: auto;
+         margin: 15px 0 15px;
+     }
+
+     .input-box {
+         width: 100%;
+         height: 50px;
+         margin: 30px 0;
+
+     }
+ }

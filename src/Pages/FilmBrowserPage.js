@@ -3,7 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FilmList from '../Components/FilmList';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
-
+import Navbar from '../Components/Navbar';
+import '../Styling/FilmBrowserPage.css';
 /*
   This is the page which allows a user to browse all films
 */
@@ -33,9 +34,9 @@ const FilmBrowserPage = () => {
 
     return (
         <GradientBackground>
-          <div>
+          <Navbar/>
+            <div className='content'>
             <FilmList bannerDisplay={'All Films'} filmIds={filmIds} profileId={profileId} isFilmBrowser={true} />
-            <ActionButton label='Back to Profile' onClick={() => { navigate(`/profile/${profileId}`) }} />
           </div>
         </GradientBackground>
     );
