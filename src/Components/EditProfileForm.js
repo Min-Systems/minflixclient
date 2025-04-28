@@ -6,7 +6,7 @@ import ActionButton from './ActionButton';
 /*
   This component allows a user to edit the name of a profile
 */
-const EditProfileForm = ({ loadProfile }) => {
+const EditProfileForm = ({ loadProfile, onClose }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [displayName, setDisplayName] = useState('');
     const [newDisplayName, setNewDisplayName] = useState('');
@@ -57,6 +57,9 @@ const EditProfileForm = ({ loadProfile }) => {
             setNewDisplayName('');
             loadProfile();
             setIsVisible(false);
+            if (onClose) {
+                onClose();
+              }
         } catch (error) {
             console.log(`Error in loadProfiles: ${error.message}`);
         }
@@ -65,33 +68,30 @@ const EditProfileForm = ({ loadProfile }) => {
     return (
       
         <div>
-            <ActionButton  label ="Edit Profile" onClick={() => setIsVisible(true)} />
-            <div id ='editProfileFormContainer'>  
-            {isVisible && (
-                <form id='editProfileForm' className='profile-form' onSubmit={handleEditProfileSubmit} >
-                    <input
-                        type='text'
-                        placeholder='Enter display name'
-                        name='displayname'
-                        value={displayName}
-                        onChange={(e) => setDisplayName(e.target.value)}
-                        required     
-                    />
-                    
-                    <input
-                        type='text'
-                        placeholder='Enter new display name'
-                        name='newDisplayName'
-                        value={newDisplayName}
-                        onChange={(e) => setNewDisplayName(e.target.value)}
-                        required
-                    />
+           <div id='editProfileFormContainer'>  
+  <form id='editProfileForm' className='profile-form' onSubmit={handleEditProfileSubmit}>
+    <input
+      type='text'
+      placeholder='Enter display name'
+      name='displayname'
+      value={displayName}
+      onChange={(e) => setDisplayName(e.target.value)}
+      required
+    />
+    
+    <input
+      type='text'
+      placeholder='Enter new display name'
+      name='newDisplayName'
+      value={newDisplayName}
+      onChange={(e) => setNewDisplayName(e.target.value)}
+      required
+    />
 
-                    <ActionButton label="Submit" type='submit' />
-                    <ActionButton label="Close" onClick={() => setIsVisible(false)} id='closeButton'/>                    
-                </form>
-            )}
-            </div>
+    <ActionButton label="Submit" type='submit' />
+    <ActionButton label="Close" onClick={onClose} />
+  </form>
+</div>
         </div>
     
     );

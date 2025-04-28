@@ -1,115 +1,220 @@
-
-@media (max-width: 420px) {
-
-    .profile-home-page {
-        font-size: 50px;
-        color: #FFF;
-        text-align: center;
-
+#overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Profile Page Layout */
+  .profile-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+  }
+  
+  /* Left Panel: Title + Nav Links */
+  .left-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20rem;
+    margin-right: 50rem;
+  }
+  
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  /* Title text */
+  .title {
+    text-align: left;
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5rem;
+  }
+  
+  /* Edit pencil button */
+  .edit-button {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .edit-button:hover {
+    color: #1e90ff;
+  }
+  
+  /* Nav Links */
+  .nav-bar-fixed {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  
+  /* Section Link Buttons */
+  .section-link {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0 0 9px;
+    outline: none;
+    transition: all 0.3s ease, border-bottom-color 0.3s ease;
+  }
+  
+  .section-link[data-selected="true"] {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    border-bottom: 2px solid white;
+  }
+  
+  .section-link:hover {
+    color: #1e90ff;
+  }
+  
+  /* Content Wrapper */
+  .content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  /* Section Divider */
+  .section-divider {
+    width: 100%;
+    height: 2px;
+    background-color: #555;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Edit Profile Form Wrapper */
+  .edit-profile-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Popup Form Style */
+  .edit-profile-form-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    z-index: 999;
+    width: 300px;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  
+  .edit-profile-form-popup.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .edit-profile-form-popup.hide {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+  
+  /* Inside the form */
+  .edit-profile-form-popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Responsive Mobile Layout */
+  @media (max-width: 840px) {
+  
+    .profile-layout {
+      align-items: center;
     }
-
-    .back-to-profile {
-        margin: 10px;
-        font-size: 1rem;
+  
+    .left-panel {
+      width: 100%;
+      padding-top: 5rem;
+      margin-right: 0;
     }
-
-    #overlay,
-    #overlay * {
-        box-sizing: border-box;
+  
+    .title {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 2rem;
     }
-
-    #overlay {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        overflow: hidden;
-        justify-content: space-between;
-        /* this spreads top, middle, bottom */
-        align-items: center;
-        text-align: center;
-        padding: 20px;
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0;
     }
-
-    /* Profile Dashboard*/
-    #overlay #profileListContainer {
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  
+    .content-wrapper {
+      margin-top: 20px;
+      justify-content: center;
+      padding: 0 5px;
     }
-
-    /* Profile Circles */
-    #overlay #profileList {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin: 40px 0;
-        list-style: none;
-        padding: 0;
+  
+    .edit-profile-form-popup {
+      position: fixed;
+      top: 20%;
+      left: 5%;
+      width: 90%;
+      padding: 0px;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
-    #overlay #profileListItem {
-        display: flex;
-        justify-content: center;
+  
+    .edit-profile-form-popup form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
     }
-
-    #overlay #profileButton {
-        border: 2px solid #00bfff;
-        border-radius: 50%;
-        width: 120px;
-        height: 120px;
-        background: transparent;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        transition: transform 0.2s, background-color 0.3s;
+  
+    .section-link {
+      font-size: 14px;
     }
-
-    #overlay #profileButton:hover {
-        transform: scale(1.05);
-        border-color: #1e90ff;
-        background-color: #1e90ff;
-        color: white;
-    }
-
-    /* Form Styling */
-    #overlay #editProfileForm,
-    #overlay #addProfileForm {
-        background-color: #1a1a1a;
-        border: 2px solid #00bfff;
-        padding: 20px;
-        color: white;
-        border-radius: 10px;
-        width: 260px;
-        margin: 20px auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #overlay #editProfileForm input,
-    #overlay #addProfileForm input {
-        background-color: black;
-        color: white;
-        border: 1px solid blue;
-        padding: 10px;
-        margin-bottom: 10px;
-        width: 95%;
-    }
-
-    /* Styling for the Edit profile, Add profile, and Logout buttons*/
-    .buttonRow {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 10px;
-    }
-
-    #logoutButtonContainer {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    
-}
+  }
+  

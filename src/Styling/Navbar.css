@@ -175,15 +175,17 @@
 }
 
 .dropdown-link {
-  display: block;
-  padding: 10px 20px;
+  display: inline-block; /* 🔥 smaller clickable area */
+  padding: 5px 10px; /* 🔥 less padding */
   color: white;
   text-decoration: none;
-  transition: background-color 0.3s;
+  transition: color 0.3s ease;
+  font-size: 16px;
 }
 
+/* New hover effect */
 .dropdown-link:hover {
-  background-color: #1e90ff;
+  color: #1e90ff; /* 🔥 only text color changes */
 }
 
 /* Responsive adjustment for profile circle */
