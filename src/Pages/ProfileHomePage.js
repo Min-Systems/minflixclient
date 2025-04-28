@@ -119,18 +119,29 @@ const ProfileHomePage = () => {
                             </button>
                             <button
                                 className="section-link"
-                                data-selected={activeSection === 'watch-history'}
-                                onClick={() => setActiveSection('watch-history')}
-                            >
-                                Watch History
-                            </button>
-                            <button
-                                className="section-link"
                                 data-selected={activeSection === 'watch-later'}
                                 onClick={() => setActiveSection('watch-later')}
                             >
                                 Watch Later
                             </button>
+                            <button
+                                className="section-link"
+                                data-selected={activeSection === 'watch-history'}
+                                onClick={() => setActiveSection('watch-history')}
+                            >
+                                Watch History
+                            </button>
+
+                            {/* *********************UNCOMMENT ONCE RECOMMENDATION IS IMPLEMENTED************************
+                            <button
+                                className="section-link"
+                                data-selected={activeSection === 'recommendations'}
+                                onClick={() => setActiveSection('recommendations')}
+                            >
+                                Recommendations
+                            </button>
+                            */}
+
                         </div>
 
                         <div className="section-divider"></div>
@@ -152,6 +163,16 @@ const ProfileHomePage = () => {
                                     <FilmList bannerDisplay={''} filmIds={watchLaterFilmIds} isFilmBrowser={false} />
                                 </section>
                             )}
+
+                            {/* ************************UNCOMMENT ONCE RECOMMENDATION IS IMPLEMENTED************************ 
+                            {activeSection === 'recommendations' && (
+                                <section className="recommendations-section">
+                                    <FilmList bannerDisplay={''} filmIds={recommendationsFilmIds} isFilmBrowser={false} />
+                                </section>  
+                            )}
+                                */}
+
+
                         </div>
 
                     </div>

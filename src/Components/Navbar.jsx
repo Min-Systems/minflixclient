@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getTokenData, isTokenValid } from '../Network';
 import { useNavigate, useParams, useLocation, Link } from 'react-router-dom';
+import FilmSearchForm from '../Components/FilmSearchForm'; 
 import '../Styling/Navbar.css';
 
 const Navbar = () => {
@@ -11,8 +12,8 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [displayName, setDisplayName] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  // 🔥 Get profileId either from params or from location.state
+ 
+  // Get profileId either from params or from location.state
   const profileId = useParams().profileId || (location.state && location.state.profileId);
 
   useEffect(() => {
@@ -74,7 +75,7 @@ const Navbar = () => {
       ];
     }
 
-    if (['/browse', '/watchlater', '/watchhistory', '/favorite'].some(path => location.pathname.startsWith(path))) {
+    if (['/browse', '/watchlater', '/watchhistory', '/favorite', '/searchhistory'].some(path => location.pathname.startsWith(path))) {
       return [
         { path: `/profile/${profileId}`, label: 'Profile' },
         { path: `/favorite/${profileId}`, label: 'Favorites' },
@@ -84,7 +85,6 @@ const Navbar = () => {
 
       ];
     }
-
     return [];
   };
 
@@ -101,6 +101,8 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
+
+
   return (
     <nav className={`navbar ${showNavbar ? 'active' : 'hidden'}`}>
       <div className="navbar-top">
@@ -112,6 +114,8 @@ const Navbar = () => {
             <Link to={`/browse/${profileId}`} className="nav-link">
               Movies
             </Link>
+
+            <FilmSearchForm profileId={profileId} />
           </div>
         )}
 

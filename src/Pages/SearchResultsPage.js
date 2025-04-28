@@ -3,11 +3,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FilmList from '../Components/FilmList';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
+import Navbar from '../Components/Navbar';
 
 /*
     This is the page that allows the user to see the search results
 */
 const SearchResultsPage = () => {
+    const searchQuery = localStorage.getItem('searchQuery');
     const navigate = useNavigate();
     const { profileId } = useParams();
     const [searchHistory, setSearchHistory] = useState([]);
@@ -25,6 +27,7 @@ const SearchResultsPage = () => {
 
     return(
         <GradientBackground>
+            <Navbar/>
             <FilmList bannerDisplay={'Search Results'} filmIds={searchHistory} isFilmBrowser={false}/>
             <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`)}/>
         </GradientBackground>

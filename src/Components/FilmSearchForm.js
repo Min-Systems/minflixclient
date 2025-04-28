@@ -53,18 +53,23 @@ const FilmSearchForm = ({ profileId }) => {
 
     return (
         <div className='search-form-container'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="navbar-search-form">
+            <div className="navbar-search-container"> 
                 <input
+                   
                     type='search'
                     value={searchText}
+                    placeholder='Search for a film...'
                     onChange={(e) => setSearchText(e.target.value)}
                     onFocus={() => setShowDropdown(true)}
                     onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
                     required
+                    className="navbar-search-input"
                 />
-                <button type='submit'>Submit</button>
+                <button type='submit' className="navbar-search-button">🔎</button >
+                </div>
                 {showDropdown && searchHistory.length > 0 && (
-                    <div className='search-history-dropdown'>
+                    <div className="navbar-search-dropdown">
                         <ul className='history-list'>
                             {searchHistory.map((query, index) => (
                                 <li
