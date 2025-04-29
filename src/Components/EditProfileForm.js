@@ -12,31 +12,6 @@ const EditProfileForm = ({ loadProfile, onClose }) => {
     const [newDisplayName, setNewDisplayName] = useState('');
     const navigate = useNavigate();
 
-    const profileFormStyle = {
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        border: '1px solid #ccc',
-        padding: '20px',
-        backgroundColor: 'white',
-        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
-        zIndex: 1000
-    };
-
-    const buttonStyle = {
-        float: 'right',
-        width: '100px',
-        height: '100px',
-        backgroundColor: 'gray',
-        color: 'white',
-        border: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer',
-    }
-
     const handleEditProfileSubmit = async (event) => {
         event.preventDefault();
 

@@ -27,7 +27,6 @@ const ProfileHomePage = () => {
         loadWatchLater();
     }, []);
 
-
     const loadProfileData = () => {
         try {
             if (!isTokenValid()) {
@@ -50,13 +49,13 @@ const ProfileHomePage = () => {
                 setShowEditForm(false);
             }
         }
-    
+
         if (showEditForm) {
             document.addEventListener("mousedown", handleClickOutside);
         } else {
             document.removeEventListener("mousedown", handleClickOutside);
         }
-    
+
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
@@ -75,8 +74,6 @@ const ProfileHomePage = () => {
         }
     };
 
-
-
     const loadFavorites = () => {
         try {
             const tokenData = getTokenData();
@@ -87,7 +84,6 @@ const ProfileHomePage = () => {
             console.log(`Error loading favorites: ${error.message}`);
         }
     };
-
 
     const loadWatchHistory = () => {
         try {
@@ -166,7 +162,7 @@ const ProfileHomePage = () => {
                             >
                                 Watch Later
                             </button>
-                            
+
                             <button
                                 className="section-link"
                                 data-selected={activeSection === 'watch-history'}
@@ -174,48 +170,37 @@ const ProfileHomePage = () => {
                             >
                                 Watch History
                             </button>
-
-                        
-                            
-                            
-
                         </div>
-
                         <div className="section-divider"></div>
-
                         {/* Sections appear below nav links */}
                         <div className="content-wrapper">
 
-                                     {/* Favorites section */}
+                            {/* Favorites section */}
                             {activeSection === 'favorites' && (
                                 <section className="favorites-section">
                                     <FilmList bannerDisplay={''} filmIds={favoriteFilmIds} isFilmBrowser={false} />
                                 </section>
                             )}
-                                    {/* Recommendations section */}
+                            {/* Recommendations section */}
                             {activeSection === 'recommendations' && (
                                 <section className="recommendations-section">
                                     <FilmList bannerDisplay={''} filmIds={recommendedFilmIds} isFilmBrowser={false} />
-                                </section>  
+                                </section>
                             )}
-                                    {/* Watch History section */}
+                            {/* Watch History section */}
                             {activeSection === 'watch-history' && (
                                 <section className="watch-history-section">
                                     <FilmList bannerDisplay={''} filmIds={watchHistoryFilmIds} isFilmBrowser={false} />
                                 </section>
                             )}
-                                    {/* Watch Later section */}
+                            {/* Watch Later section */}
                             {activeSection === 'watch-later' && (
                                 <section className="watch-later-section">
                                     <FilmList bannerDisplay={''} filmIds={watchLaterFilmIds} isFilmBrowser={false} />
                                 </section>
-
                             )}
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </GradientBackground>

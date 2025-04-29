@@ -30,10 +30,6 @@ const FilmWatcher = () => {
             setSource(`${API_BASE_URL}/film/${film.file_name}`);
         }
 
-        console.log(`from FilmWatcher profileId: ${profileId}`);
-        console.log('the source:');
-        console.log(source);
-
         startHideTimer();
 
         // Clean up timer

@@ -33,8 +33,6 @@ const AuthenticationForm = ({ isLogin = false }) => {
             const authFunction = isLogin ? login : register;
             const token = await authFunction(username, password);
             
-            console.log("Authentication successful!");
-            
             // Store the token
             localStorage.setItem('authToken', token);
             

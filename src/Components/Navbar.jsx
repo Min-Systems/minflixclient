@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getTokenData, isTokenValid } from '../Network';
 import { useNavigate, useParams, useLocation, Link } from 'react-router-dom';
-import FilmSearchForm from '../Components/FilmSearchForm'; 
+import FilmSearchForm from '../Components/FilmSearchForm';
 import '../Styling/Navbar.css';
 
 const Navbar = () => {
@@ -12,7 +12,7 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [displayName, setDisplayName] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
- 
+
   // Get profileId either from params or from location.state
   const profileId = useParams().profileId || (location.state && location.state.profileId);
 
@@ -100,8 +100,6 @@ const Navbar = () => {
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
-
-
 
   return (
     <nav className={`navbar ${showNavbar ? 'active' : 'hidden'}`}>

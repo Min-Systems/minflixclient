@@ -18,7 +18,6 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
         if (filmIds && Array.isArray(filmIds)) {
             getFilmsToRender();
         }
-        console.log(`In filmList component profileId: ${profileId}`)
     }, [filmIds]); // Add filmIds as a dependency
 
     const getFilmsToRender = () => {
@@ -41,14 +40,12 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
     const watchFilm = async (filmId) => {
         // Navigate to the watch film page with the film ID
         await handleAddWatchHistory(filmId);
-        console.log('added watch history')
         navigate(`/watch/${filmId}`, { state: { profileId } });
     };
 
     const handleAddWatchHistory = async (filmId) => {
         try {
             // Add to watch history since the user is watching the film
-            console.log(`Adding film ${filmId} to watch history`);
             const newToken = await addWatchHistory(profileId, filmId);
 
             localStorage.setItem('authToken', newToken);
@@ -59,7 +56,6 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
 
     const handleAddWatchLater = async (filmId) => {
         try {
-            console.log(`Adding film ${filmId} to watch later list`);
             const newToken = await addWatchLater(profileId, filmId);
             
             localStorage.setItem('authToken', newToken);
@@ -70,7 +66,6 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
 
     const handleAddFavorite = async (filmId) => {
         try {
-            console.log(`Adding film ${filmId} to favorites`);
             const newToken = await addFavorite(profileId, filmId);
 
             localStorage.setItem('authToken', newToken);
