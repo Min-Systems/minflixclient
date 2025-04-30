@@ -37,7 +37,6 @@ const FilmWatcher = () => {
             <video width='1200' controls muted='muted'>
                 <source src={source} type='video/mp4' />
             </video>
-            {/* <button onClick={() => navigate(`/browse/${profileId}`)}>Back to films</button> */}
             <ActionButton label='Return to films'onClick={() => navigate(`/browse/${profileId}`)} />
         </GradientBackground>
     );
