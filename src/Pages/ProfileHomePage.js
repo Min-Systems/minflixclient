@@ -60,33 +60,35 @@ const ProfileHomePage = () => {
     };
 
     return (
-        <GradientBackground>
-            <div id='overlay'>
-                <Navbar profileId={profileId} />
-                <h2 c> {displayName}'s Home Page</h2>
-                <EditProfileForm loadProfile={loadProfileData} />
-                {/* Recommended Films */}
-                <div>
-                    <h3>Recommended For You:</h3>
-                    {recommendedFilmIds.length > 0 ? (
-                        <FilmList
-                            filmIds={recommendedFilmIds}
-                            isFilmBrowser={false}
-                            profileId={profileId}
-                        />
-                    ) : (
-                        <p>No Recommendations Available...</p>
-                    )}
+        <div className='main-content'>
+            <GradientBackground>
+                <div id='overlay'>
+                    <Navbar profileId={profileId} hasSearch={true} />
+                    <h2 c> {displayName}'s Home Page</h2>
+                    <EditProfileForm loadProfile={loadProfileData} />
+                    {/* Recommended Films */}
+                    <div>
+                        <h3>Recommended For You:</h3>
+                        {recommendedFilmIds.length > 0 ? (
+                            <FilmList
+                                filmIds={recommendedFilmIds}
+                                isFilmBrowser={false}
+                                profileId={profileId}
+                            />
+                        ) : (
+                            <p>No Recommendations Available...</p>
+                        )}
+                    </div>
+                    <div className='buttonRow'>
+                        <ActionButton label='Back to Profiles' onClick={() => navigate('/profiles')} />
+                        <ActionButton label='Browse Films' onClick={() => navigate(`/browse/${profileId}`)} />
+                        <ActionButton label='Browse Favorites' onClick={() => navigate(`/favorite/${profileId}`)} />
+                        <ActionButton label='Browse Watch Later' onClick={() => navigate(`/watchlater/${profileId}`)} />
+                        <ActionButton label='Browse Watch History' onClick={() => navigate(`/watchhistory/${profileId}`)} />
+                    </div>
                 </div>
-                <div className='buttonRow'>
-                    <ActionButton label='Back to Profiles' onClick={() => navigate('/profiles')} />
-                    <ActionButton label='Browse Films' onClick={() => navigate(`/browse/${profileId}`)} />
-                    <ActionButton label='Browse Favorites' onClick={() => navigate(`/favorite/${profileId}`)} />
-                    <ActionButton label='Browse Watch Later' onClick={() => navigate(`/watchlater/${profileId}`)} />
-                    <ActionButton label='Browse Watch History' onClick={() => navigate(`/watchhistory/${profileId}`)} />
-                </div>
-            </div>
         </GradientBackground>
+        </div>
     );
 
 };
