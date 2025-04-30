@@ -151,6 +151,21 @@ export const getRecommendations = async (profileId) => {
   }, true);
 }
 
+// Search for films
+export const search = async (profile_id, query) => {
+  const bodyFields = new URLSearchParams();
+  bodyFields.append('profile_id', profile_id);
+  bodyFields.append('query', query);
+
+  return apiRequest('/search', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: bodyFields
+  }, true); // requires authentication
+};
+
 // Get JWT token data
 export const getTokenData = () => {
   try {

@@ -5,6 +5,8 @@ import EditProfileForm from '../Components/EditProfileForm';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
 import FilmList from '../Components/FilmList';
+import FilmSearchForm from '../Components/FilmSearchForm';
+import Navbar from '../Components/Navbar';
 
 /*
   Page that allows users to see everything about a specific profile
@@ -60,6 +62,7 @@ const ProfileHomePage = () => {
     return (
         <GradientBackground>
             <div id='overlay'>
+                <Navbar profileId={profileId} />
                 <h2 c> {displayName}'s Home Page</h2>
                 <EditProfileForm loadProfile={loadProfileData} />
                 {/* Recommended Films */}
