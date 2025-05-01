@@ -5,6 +5,7 @@ import EditProfileForm from '../Components/EditProfileForm';
 import GradientBackground from '../Components/GradientBackground';
 import FilmList from '../Components/FilmList';
 import FilmSearchForm from '../Components/FilmSearchForm';
+import ActionButton from '../Components/ActionButton';
 import Navbar from '../Components/Navbar';
 
 const ProfileHomePage = () => {

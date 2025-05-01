@@ -36,6 +36,7 @@ const FilmBrowserPage = () => {
           <Navbar hasSearch={false}/>
           <div>
             <FilmList bannerDisplay={'All Films'} filmIds={filmIds} profileId={profileId} isFilmBrowser={true} />
+            <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`)}/>
           </div>
         </GradientBackground>
     );
