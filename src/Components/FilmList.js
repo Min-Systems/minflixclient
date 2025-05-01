@@ -116,9 +116,7 @@ const FilmList = ({ bannerDisplay, filmIds, isFilmBrowser, profileId }) => {
                 <p>No films to display</p>
             )}
         </div>
-      
     );
-    
 };
 
 export default FilmList;

@@ -15,8 +15,8 @@ const FavoritePage = () => {
     const [favoriteFilmIds, setFavoriteFilmIds] = useState([]);
 
     useEffect(() => {
-        loadFavorites();        
-    },[]);
+        loadFavorites();
+    }, []);
 
     const loadFavorites = () => {
         try {
@@ -36,8 +36,11 @@ const FavoritePage = () => {
 
     return (
         <GradientBackground>
-            <Navbar />
-            <FilmList bannerDisplay={'Favorited Films'} filmIds={favoriteFilmIds} isFilmBrowser={false}/>
+            <Navbar hasSearch={false} />
+            <div>
+                <FilmList bannerDisplay={'Favorited Films'} filmIds={favoriteFilmIds} isFilmBrowser={false} />
+                <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`)} />
+            </div>
         </GradientBackground>
     );
 }

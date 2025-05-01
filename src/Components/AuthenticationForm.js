@@ -32,10 +32,12 @@ const AuthenticationForm = ({ isLogin = false }) => {
             // Use the appropriate API function based on form type
             const authFunction = isLogin ? login : register;
             const token = await authFunction(username, password);
-            
+
+            console.log("Authentication successful!");
+
             // Store the token
             localStorage.setItem('authToken', token);
-            
+
             // Navigate to profiles page
             navigate('/profiles');
 
@@ -86,7 +88,7 @@ const AuthenticationForm = ({ isLogin = false }) => {
                     />
                 </p>
             )}
-            <p class = "show-password">
+            <p class="show-password">
                 <input
                     id='showPassword'
                     type='checkbox'

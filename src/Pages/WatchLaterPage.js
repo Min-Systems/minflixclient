@@ -16,7 +16,7 @@ const WatchLaterPage = () => {
 
     useEffect(() => {
         loadWatchLater();
-    },[]);
+    }, []);
 
     const loadWatchLater = () => {
         try {
@@ -36,8 +36,11 @@ const WatchLaterPage = () => {
 
     return (
         <GradientBackground>
-            <Navbar />
-            <FilmList bannerDisplay={'Watch Later'} filmIds={watchLaterFilmIds} isFilmBrowser={false}/>
+            <Navbar hasSearch={false} />
+            <div>
+                <FilmList bannerDisplay={'Watch Later'} filmIds={watchLaterFilmIds} isFilmBrowser={false} />
+                <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`)} />
+            </div>
         </GradientBackground>
     );
 };

@@ -31,8 +31,11 @@ const WatchHistoryPage = () => {
 
   return (
     <GradientBackground>
-      <Navbar />
-      <FilmList bannerDisplay={'Watch History'} filmIds={watchHistoryFilmIds} isFilmBrowser={false} />
+      <Navbar hasSearch={false} />
+      <div>
+        <FilmList bannerDisplay={'Watch History'} filmIds={watchHistoryFilmIds} isFilmBrowser={false} />
+        <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`)} />
+      </div>
     </GradientBackground>
   );
 };
