@@ -53,37 +53,7 @@ const FilmSearchForm = ({ profileId }) => {
         }
     };
 
-    /*
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type='search'
-                    value={searchText}
-                    placeholder='Search for a film...'
-                    onChange={(e) => setSearchText(e.target.value)}
-                    onFocus={() => setShowDropdown(true)}
-                    onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
-                    required
-                />
-                {showDropdown && searchHistory.length > 0 && (
-                    <ul className='history-list'>
-                        {searchHistory.map((query, index) => (
-                            <li
-                                key={index}
-                                className="history-item"
-                            >
-                                {query}
-                            </li>
-                        ))}
-                    </ul>
-                )}
-                <ActionButton label='submit' type='submit' />
-            </form>
-        </div>
-    );
-    */
-       return (
         <div className="search-container">
             <form onSubmit={handleSubmit} className="search-form">
                 <div className="search-input-container">

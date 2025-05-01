@@ -9,11 +9,11 @@ const Navbar = ({ profileId, hasSearch }) => {
       <div className="navbar-brand">
         <h1>Minflix</h1>
       </div>
-      {(hasSearch && (
-      <div className="navbar-search">
-        <FilmSearchForm profileId={profileId} />
-      </div>
-      ))}
+      {hasSearch && (
+        <div className="navbar-search">
+          <FilmSearchForm profileId={profileId} />
+        </div>
+      )}
     </nav>
   );
 };
