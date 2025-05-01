@@ -62,8 +62,8 @@ const ProfileHomePage = () => {
     return (
         <div className='main-content'>
             <GradientBackground>
+            <Navbar profileId={profileId} hasSearch={true} />
                 <div id='overlay'>
-                    <Navbar profileId={profileId} hasSearch={true} />
                     <h2 c> {displayName}'s Home Page</h2>
                     <EditProfileForm loadProfile={loadProfileData} />
                     {/* Recommended Films */}

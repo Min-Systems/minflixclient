@@ -4,6 +4,7 @@ import { getTokenData } from '../Network';
 import FilmList from '../Components/FilmList';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
+import Navbar from '../Components/Navbar';
 
 /*
   This is the page that allows a user to view their favorite films
@@ -14,8 +15,8 @@ const FavoritePage = () => {
     const [favoriteFilmIds, setFavoriteFilmIds] = useState([]);
 
     useEffect(() => {
-        loadFavorites();        
-    },[]);
+        loadFavorites();
+    }, []);
 
     const loadFavorites = () => {
         try {
@@ -35,8 +36,11 @@ const FavoritePage = () => {
 
     return (
         <GradientBackground>
-            <FilmList bannerDisplay={'Favorited Films'} filmIds={favoriteFilmIds} isFilmBrowser={false}/>
-            <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`) } />
+            <Navbar hasSearch={false} />
+            <div>
+                <FilmList bannerDisplay={'Favorited Films'} filmIds={favoriteFilmIds} isFilmBrowser={false} />
+                <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`)} />
+            </div>
         </GradientBackground>
     );
 }
