@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getTokenData, search } from '../Network';
+import ActionButton from './ActionButton';
+import '../Styling/FilmSearchForm.css'
 
 /*
   This is the component which allows a user to search for a film by name
@@ -44,7 +46,7 @@ const FilmSearchForm = ({ profileId }) => {
 
             // if there are results navigate to the page and show the results
             if (localStorage.getItem('searchResults') != '') {
-                navigate(`/searchhistory/${profileId}`);
+                navigate(`/searchresults/${profileId}`);
             }
         } catch (error) {
             console.log(error);
@@ -52,29 +54,32 @@ const FilmSearchForm = ({ profileId }) => {
     };
 
     return (
-        <div className='search-form-container'>
-            <form onSubmit={handleSubmit} className="navbar-search-form">
-            <div className="navbar-search-container"> 
-                <input
-                   
-                    type='search'
-                    value={searchText}
-                    placeholder='Search for a film...'
-                    onChange={(e) => setSearchText(e.target.value)}
-                    onFocus={() => setShowDropdown(true)}
-                    onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
-                    required
-                    className="navbar-search-input"
-                />
-                <button type='submit' className="navbar-search-button">🔎</button >
+        <div className="search-container">
+            <form onSubmit={handleSubmit} className="search-form">
+                <div className="search-input-container">
+                    <input
+                        type='search'
+                        value={searchText}
+                        placeholder='Search for a film...'
+                        onChange={(e) => setSearchText(e.target.value)}
+                        onFocus={() => setShowDropdown(true)}
+                        onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
+                        required
+                        className="search-input"
+                    />
+                    <ActionButton label='Search' type='submit' className="search-button" />
                 </div>
                 {showDropdown && searchHistory.length > 0 && (
-                    <div className="navbar-search-dropdown">
+                    <div className="dropdown-container">
                         <ul className='history-list'>
                             {searchHistory.map((query, index) => (
                                 <li
                                     key={index}
                                     className="history-item"
+                                    onClick={() => {
+                                        setSearchText(query);
+                                        setShowDropdown(false);
+                                    }}
                                 >
                                     {query}
                                 </li>

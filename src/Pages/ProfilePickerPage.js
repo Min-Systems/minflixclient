@@ -5,6 +5,8 @@ import { addProfile, editProfile, getTokenData, isTokenValid, getFilmData } from
 import '../Styling/ProfilePickerPage.css';
 import ActionButton from '../Components/ActionButton';
 import GradientBackground from '../Components/GradientBackground';
+import Navbar from '../Components/Navbar';
+
 /*
   Page that allows the user to edit and choose profiles
 */
@@ -104,14 +106,14 @@ const ProfilePickerPage = () => {
     };
 
     const handleProfileSelect = (profileId) => {
-       navigate(`/profile/${profileId}`);
+        navigate(`/profile/${profileId}`);
     };
 
     return (
         <GradientBackground>
+            <Navbar hasSearch={false} />
             <div id='overlay'>
                 <h2>Profile Dashboard</h2>
-
                 <div id='profileListContainer'>
                     {profiles.length === 0 ? (
                         <p>No profiles yet. Click 'Add Profile' to create one.</p>
@@ -176,10 +178,10 @@ const ProfilePickerPage = () => {
                             <ActionButton label="Close" onClick={() => setShowAddProfileForm(false)} id='closeButton' />
                         </form>
                     )}
-                </div> 
-                    <div id="logoutButtonContainer">
-                        <LogoutButton />
-                    </div>
+                </div>
+                <div id="logoutButtonContainer">
+                    <LogoutButton />
+                </div>
             </div>
         </GradientBackground>
     );

@@ -41,36 +41,34 @@ const EditProfileForm = ({ loadProfile, onClose }) => {
     };
 
     return (
-
         <div>
+            <ActionButton label="Edit Profile" onClick={() => setIsVisible(true)} />
             <div id='editProfileFormContainer'>
-                <form id='editProfileForm' className='profile-form' onSubmit={handleEditProfileSubmit}>
-                    <input
-                        type='text'
-                        placeholder='Enter display name'
-                        name='displayname'
-                        value={displayName}
-                        onChange={(e) => setDisplayName(e.target.value)}
-                        required
-                    />
-
-                    <input
-                        type='text'
-                        placeholder='Enter new display name'
-                        name='newDisplayName'
-                        value={newDisplayName}
-                        onChange={(e) => setNewDisplayName(e.target.value)}
-                        required
-                    />
-
-                    <ActionButton label="Submit" type='submit' />
-                    <ActionButton label="Close" onClick={onClose} />
-                </form>
+                {isVisible && (
+                    <form id='editProfileForm' className='profile-form' onSubmit={handleEditProfileSubmit} >
+                        <input
+                            type='text'
+                            placeholder='Enter display name'
+                            name='displayname'
+                            value={displayName}
+                            onChange={(e) => setDisplayName(e.target.value)}
+                            required
+                        />
+                        <input
+                            type='text'
+                            placeholder='Enter new display name'
+                            name='newDisplayName'
+                            value={newDisplayName}
+                            onChange={(e) => setNewDisplayName(e.target.value)}
+                            required
+                        />
+                        <ActionButton label="Submit" type='submit' />
+                        <ActionButton label="Close" onClick={() => setIsVisible(false)} id='closeButton' />
+                    </form>
+                )}
             </div>
         </div>
-
     );
-
 };
 
 export default EditProfileForm;

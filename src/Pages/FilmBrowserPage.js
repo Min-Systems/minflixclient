@@ -4,7 +4,6 @@ import FilmList from '../Components/FilmList';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
 import Navbar from '../Components/Navbar';
-import '../Styling/FilmBrowserPage.css';
 /*
   This is the page which allows a user to browse all films
 */
@@ -34,9 +33,10 @@ const FilmBrowserPage = () => {
 
     return (
         <GradientBackground>
-          <Navbar/>
-            <div className='content'>
+          <Navbar hasSearch={false}/>
+          <div>
             <FilmList bannerDisplay={'All Films'} filmIds={filmIds} profileId={profileId} isFilmBrowser={true} />
+            <ActionButton label='Return to profile' onClick={() => navigate(`/profile/${profileId}`)}/>
           </div>
         </GradientBackground>
     );

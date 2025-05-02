@@ -4,8 +4,9 @@ import { getTokenData, isTokenValid, getRecommendations } from '../Network';
 import EditProfileForm from '../Components/EditProfileForm';
 import GradientBackground from '../Components/GradientBackground';
 import FilmList from '../Components/FilmList';
+import FilmSearchForm from '../Components/FilmSearchForm';
+import ActionButton from '../Components/ActionButton';
 import Navbar from '../Components/Navbar';
-import '../Styling/ProfileHomePage.css';
 
 const ProfileHomePage = () => {
     const navigate = useNavigate();
@@ -108,102 +109,35 @@ const ProfileHomePage = () => {
     };
 
     return (
-        <GradientBackground>
-            <Navbar />
-            <div id="overlay">
-                <div className="profile-layout">
-
-                    {/* Left side: Title + Nav Links + Sections (all stacked vertically) */}
-                    <div className="left-panel">
-
-                        {/* Title + Pencil next to each other */}
-                        <div className="title-row">
-                            <h2 className="title">{displayName}'s Home Page</h2>
-
-                            {/* Pencil Button */}
-                            <button className="edit-button" onClick={() => setShowEditForm(true)}>
-                                ✏️
-                            </button>
-                        </div>
-
-                        <div className="edit-profile-wrapper">
-                            <div ref={formRef} className={`edit-profile-form-popup ${showEditForm ? 'show' : 'hide'}`}>
-                                {showEditForm && (
-                                    <EditProfileForm
-                                        loadProfile={loadProfileData}
-                                        onClose={() => setShowEditForm(false)}
-                                    />
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Nav Links */}
-                        <div className="nav-links">
-                            <button
-                                className="section-link"
-                                data-selected={activeSection === 'favorites'}
-                                onClick={() => setActiveSection('favorites')}
-                            >
-                                Favorites
-                            </button>
-
-                            <button
-                                className="section-link"
-                                data-selected={activeSection === 'recommendations'}
-                                onClick={() => setActiveSection('recommendations')}
-                            >
-                                Recommendations
-                            </button>
-
-                            <button
-                                className="section-link"
-                                data-selected={activeSection === 'watch-later'}
-                                onClick={() => setActiveSection('watch-later')}
-                            >
-                                Watch Later
-                            </button>
-
-                            <button
-                                className="section-link"
-                                data-selected={activeSection === 'watch-history'}
-                                onClick={() => setActiveSection('watch-history')}
-                            >
-                                Watch History
-                            </button>
-                        </div>
-                        <div className="section-divider"></div>
-                        {/* Sections appear below nav links */}
-                        <div className="content-wrapper">
-
-                            {/* Favorites section */}
-                            {activeSection === 'favorites' && (
-                                <section className="favorites-section">
-                                    <FilmList bannerDisplay={''} filmIds={favoriteFilmIds} isFilmBrowser={false} />
-                                </section>
-                            )}
-                            {/* Recommendations section */}
-                            {activeSection === 'recommendations' && (
-                                <section className="recommendations-section">
-                                    <FilmList bannerDisplay={''} filmIds={recommendedFilmIds} isFilmBrowser={false} />
-                                </section>
-                            )}
-                            {/* Watch History section */}
-                            {activeSection === 'watch-history' && (
-                                <section className="watch-history-section">
-                                    <FilmList bannerDisplay={''} filmIds={watchHistoryFilmIds} isFilmBrowser={false} />
-                                </section>
-                            )}
-                            {/* Watch Later section */}
-                            {activeSection === 'watch-later' && (
-                                <section className="watch-later-section">
-                                    <FilmList bannerDisplay={''} filmIds={watchLaterFilmIds} isFilmBrowser={false} />
-                                </section>
-                            )}
-                        </div>
+        <div className='main-content'>
+            <GradientBackground>
+            <Navbar profileId={profileId} hasSearch={true} />
+                <div id='overlay'>
+                    <h2> {displayName}'s Home Page</h2>
+                    <EditProfileForm loadProfile={loadProfileData} />
+                    {/* Recommended Films */}
+                    <div>
+                        <h3>Recommended For You:</h3>
+                        {recommendedFilmIds.length > 0 ? (
+                            <FilmList
+                                filmIds={recommendedFilmIds}
+                                isFilmBrowser={false}
+                                profileId={profileId}
+                            />
+                        ) : (
+                            <p>No Recommendations Available...</p>
+                        )}
+                    </div>
+                    <div className='buttonRow'>
+                        <ActionButton label='Back to Profiles' onClick={() => navigate('/profiles')} />
+                        <ActionButton label='Browse Films' onClick={() => navigate(`/browse/${profileId}`)} />
+                        <ActionButton label='Browse Favorites' onClick={() => navigate(`/favorite/${profileId}`)} />
+                        <ActionButton label='Browse Watch Later' onClick={() => navigate(`/watchlater/${profileId}`)} />
+                        <ActionButton label='Browse Watch History' onClick={() => navigate(`/watchhistory/${profileId}`)} />
                     </div>
                 </div>
-            </div>
         </GradientBackground>
+        </div>
     );
 };
 
