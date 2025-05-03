@@ -11,21 +11,13 @@ import Navbar from '../Components/Navbar';
 const ProfileHomePage = () => {
     const navigate = useNavigate();
     const formRef = useRef(null);
-    const [showEditForm, setShowEditForm] = useState(false);
     const { profileId } = useParams();
     const [displayName, setDisplayName] = useState('');
-    const [activeSection, setActiveSection] = useState('favorites'); // Default to Favorites
-    const [favoriteFilmIds, setFavoriteFilmIds] = useState([]);
-    const [watchHistoryFilmIds, setWatchHistoryFilmIds] = useState([]);
-    const [watchLaterFilmIds, setWatchLaterFilmIds] = useState([]);
     const [recommendedFilmIds, setRecommendedFilmIds] = useState([]);
 
     useEffect(() => {
         loadProfileData();
         fetchRecommendations();
-        loadFavorites();
-        loadWatchHistory();
-        loadWatchLater();
     }, []);
 
     const loadProfileData = () => {
@@ -44,24 +36,6 @@ const ProfileHomePage = () => {
         }
     };
 
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (formRef.current && !formRef.current.contains(event.target)) {
-                setShowEditForm(false);
-            }
-        }
-
-        if (showEditForm) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [showEditForm]);
-
     // Fetch recommendations from the server
     const fetchRecommendations = async () => {
         try {
@@ -72,39 +46,6 @@ const ProfileHomePage = () => {
             setRecommendedFilmIds(filmIds);
         } catch (error) {
             console.error('Error fetching recommendations:', error);
-        }
-    };
-
-    const loadFavorites = () => {
-        try {
-            const tokenData = getTokenData();
-            const profile = tokenData.profiles.find(p => p.id == profileId);
-            const favoriteIds = profile.favorites.map(item => item.film_id);
-            setFavoriteFilmIds(favoriteIds);
-        } catch (error) {
-            console.log(`Error loading favorites: ${error.message}`);
-        }
-    };
-
-    const loadWatchHistory = () => {
-        try {
-            const tokenData = getTokenData();
-            const profile = tokenData.profiles.find(p => p.id == profileId);
-            const historyIds = profile.watch_history.map(item => item.film_id);
-            setWatchHistoryFilmIds(historyIds);
-        } catch (error) {
-            console.log(`Error loading watch history: ${error.message}`);
-        }
-    };
-
-    const loadWatchLater = () => {
-        try {
-            const tokenData = getTokenData();
-            const profile = tokenData.profiles.find(p => p.id == profileId);
-            const laterIds = profile.watch_later.map(item => item.film_id);
-            setWatchLaterFilmIds(laterIds);
-        } catch (error) {
-            console.log(`Error loading watch later: ${error.message}`);
         }
     };
 
