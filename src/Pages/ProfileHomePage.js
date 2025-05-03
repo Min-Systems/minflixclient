@@ -10,7 +10,6 @@ import Navbar from '../Components/Navbar';
 
 const ProfileHomePage = () => {
     const navigate = useNavigate();
-    const formRef = useRef(null);
     const { profileId } = useParams();
     const [displayName, setDisplayName] = useState('');
     const [recommendedFilmIds, setRecommendedFilmIds] = useState([]);
