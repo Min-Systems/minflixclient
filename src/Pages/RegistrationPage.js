@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import AuthenticationForm from '../Components/AuthenticationForm'
 import GradientBackground from "../Components/GradientBackground";
 import ActionButton from "../Components/ActionButton";

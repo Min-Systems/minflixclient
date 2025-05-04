@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 import FilmList from '../Components/FilmList';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';

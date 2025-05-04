@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router';
 import network from '../Network';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';

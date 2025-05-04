@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import LogoutButton from '../Components/LogoutButton';
 import { addProfile, editProfile, getTokenData, isTokenValid, getFilmData } from '../Network';
 import '../Styling/ProfilePickerPage.css';

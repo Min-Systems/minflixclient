@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 import { getTokenData, isTokenValid, getRecommendations } from '../Network';
 import EditProfileForm from '../Components/EditProfileForm';
 import GradientBackground from '../Components/GradientBackground';
