@@ -213,15 +213,13 @@
     width: 100%;
   }
 
-<<<<<<< HEAD
   .section-link {
     font-size: 14px;
   }
 }
-=======
+
 #logoutButtonContainer {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
->>>>>>> feature/MovieRecommender
