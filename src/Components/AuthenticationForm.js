@@ -88,7 +88,7 @@ const AuthenticationForm = ({ isLogin = false }) => {
                     />
                 </p>
             )}
-            <p class="show-password">
+            <p className="show-password">
                 <input
                     id='showPassword'
                     type='checkbox'
