@@ -3,6 +3,7 @@ import { useParams, useLocation, useNavigate } from 'react-router';
 import network from '../Network';
 import GradientBackground from '../Components/GradientBackground';
 import ActionButton from '../Components/ActionButton';
+import '../Styling/FilmWatcher.css';
 const { API_BASE_URL } = network;
 
 const FilmWatcher = () => {
@@ -28,12 +29,16 @@ const FilmWatcher = () => {
 
     return (
         <GradientBackground>
+            
             <h2>{filmName}</h2>
+            <div id='filmWatcher'>  
             {source ? (
-                <video width="1200" controls>
+                <div className="video-wrapper"> 
+                <video width="100%" controls muted='muted'>
                     <source src={source} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
+                </div>
             ) : (
                 <p>Loading video...</p>
             )}
@@ -41,6 +46,7 @@ const FilmWatcher = () => {
                 label="Return to films" 
                 onClick={() => navigate(`/browse/${profileId || ''}`)} 
             />
+            </div>
         </GradientBackground>
     );
 };

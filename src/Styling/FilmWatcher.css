@@ -1,71 +1,31 @@
-.gradient-background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(to bottom, blue, #000);
-    color: white;
-    padding: 20px;
-  }
-  
-  #filmWatcher {
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-  }
-  
-  #filmWatcher h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  #filmWatcher video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
 
 
-  /* Responsive for screens 600px and below */
-  @media (max-width: 600px) {
-    #filmWatcher h2 {
-      font-size: 1.5rem;
-    }
-  
-    #filmWatcher video {
-      max-width: 100%;
-    }
-  }
-/* Wrapper around video */
-.video-wrapper {
-  position: relative;
-  width: 80%;
+#filmWatcher {
+  width: 100%;
   max-width: 1200px;
-  margin: auto;
-  overflow: hidden;
+  text-align: center;
+  padding: 20px;
 }
 
-/* Overlay controls container */
-.video-overlay-controls {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 2;
+#filmWatcher h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-/* Back button style */
-.back-button {
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  font-size: 24px;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+#filmWatcher video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
-.back-button:hover {
-  background: rgba(0, 0, 0, 0.8);
+
+/* Responsive for screens 600px and below */
+@media (max-width: 600px) {
+  #filmWatcher h2 {
+    font-size: 1.5rem;
+  }
+
+  #filmWatcher video {
+    max-width: 100%;
+  }
 }
